@@ -920,11 +920,13 @@ angular.module('paymentApp')
 		}, {
 			"abbr": "gb",
 			"code": "826",
-			"name": "United Kingdom"
+			"name": "United Kingdom",
+			"alias": ["uk"]
 		}, {
 			"abbr": "us",
 			"code": "840",
-			"name": "United States"
+			"name": "United States",
+			"alias": "usa"
 		}, {
 			"abbr": "um",
 			"code": "581",
@@ -967,7 +969,7 @@ angular.module('paymentApp')
 			"name": "Western Sahara"
 		}, {
 			"abbr": "ye",
-			"codfe": "887",
+			"code": "887",
 			"name": "Yemen"
 		}, {
 			"abbr": "zm",
@@ -979,19 +981,49 @@ angular.module('paymentApp')
 			"name": "Zimbabwe"
 		}];
 
-		this.getAllCountries = function () {
-			return codes;
-		}
 
-		this.getCountry = function getCountry(country, field) {
+		var getCountry = this.getCountry = function getCountry(country, field, search, searchBy) {
 
 			if (!country) return null;
 
-			var result = codes.filter(function (c) {
-				return c.name.toLowerCase() === country.toString().toLowerCase() || c['code'] === country.toString() || c['abbr'].toLowerCase() === country.toString().toLowerCase();
-			})[0]
+			country = country.toString();
 
-			if (field === 'obj') return result;
+			var compFn = search ? function (a, b) {
+				if (!a || !b || typeof a !== 'string' || typeof b !== 'string') return;
+				a = a.toLowerCase(), b = b.toLowerCase();
+				return a.search(new RegExp(b, 'i')) > -1
+			} : function (a, b) {
+				if (!a || !b) return;
+				a = a.toLowerCase(), b = b.toLowerCase();
+				return a === b;
+			}
+
+			if (typeof searchBy === 'string') searchBy = [searchBy];
+
+			var result = codes.filter(function (c) {
+
+				var searchByArr = searchBy || ['name', 'code', 'abbr'];
+
+				if (searchByArr.map(function (a) {
+						return compFn(c[a], country)
+					}).filter(Boolean).length) {
+					return true;
+				}
+
+				if (!c.alias || searchBy) return;
+
+				if (typeof c.alias === 'string' && compFn(c.alias, country)) {
+					return true;
+				}
+
+				if (angular.isArray(c['alias'])) {
+					for (var i = 0; i < c['alias'].length; i++) {
+						if (compFn(c.alias[i], country)) {
+							return true;
+						}
+					}
+				}
+			});
 
 			var _field = {
 				name: 'name',
@@ -1003,8 +1035,22 @@ angular.module('paymentApp')
 				code: 'code'
 			}[field || 1];
 
-			return result ? result[_field] : null;
+			if (field !== 'obj') {
+				result = result.map(function (res) {
+					return res[_field];
+				})
+			}
+
+			return search ? result : result[0] || null;
+
 		}
+
+		window.wat = this.getCountries = function (search, searchBy, field) {
+			if (!search) return codes;
+			field = field || 'obj';
+			return getCountry(search, field, true, searchBy);
+		}
+
 
 
 	});

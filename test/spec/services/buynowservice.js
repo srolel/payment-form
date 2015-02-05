@@ -37,16 +37,42 @@ describe('Service: BuynowService', function () {
 		expect(fn()).toBe(null);
 		expect(fn(null)).toBe(null);
 
-		expect(fn('il', 'obj')).toBeDefined();
-		expect(fn('il', 'obj')).toBeTruthy();
+		//checking object return values
+		expect(fn('il', 'obj')).toEqual(jasmine.objectContaining({
+			"abbr": "il",
+			"code": "376",
+			"name": "Israel"
+		}))
 		expect(Object.keys(fn('il', 'obj')).length).toBe(3);
+
+		//checking aliases
+		expect(fn('uk')).toEqual('gb');
+		expect(fn('usa')).toEqual('us');
+
 
 
 		expect
 	});
 
 	it('should return all countries', function () {
-		expect(BuynowService.getAllCountries().length).toBeGreaterThan(0);
+		expect(BuynowService.getCountries().length).toBeGreaterThan(0);
+	})
+
+	it('should search for specific countries', function () {
+		expect(BuynowService.getCountries('isra')[0]).toEqual(jasmine.objectContaining({
+			"abbr": "il",
+			"code": "376",
+			"name": "Israel"
+		}));
+
+		expect(BuynowService.getCountries('a').length).toBeGreaterThan(0);
+
+		expect(BuynowService.getCountries('isra', null, 'name')[0]).toEqual('Israel');
+
+		expect(BuynowService.getCountries('a', null, 'name').length).toBeGreaterThan(0);
+
+		expect(BuynowService.getCountries('usa', null, 'name')[0]).toEqual('United States');
+
 	})
 
 });

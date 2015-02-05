@@ -1,8 +1,12 @@
 <div class="buynow-view">
-<div ng-click="toggleDropdown(true, $event)">{{selectedCountry.name}}</div>
-<ul class="country-list" ng-show="dropdownShown">
-	<li ng-repeat="country in countries track by country.code" class="flag {{country.abbr}}" ng-class="{selected: isCountrySelected(country)}" ng-click="selectCountry(country)">{{country.name}}</li>
-</ul>
+<div ng-click="toggleDropdown($event)">{{selectedCountry.name}}</div>
+<div ng-show="dropdownShown">
+{{countryFilter}}
+	<input ng-click="$event.stopPropagation()" type="text" ng-model="countryFilter">
+	<ul class="country-list">
+		<li ng-repeat="country in countries track by country.code | filter:countryFilter:filterCountries" class="flag {{country.abbr}}" ng-class="{selected: isCountrySelected(country)}" ng-click="selectCountry(country)">{{country.name}}</li>
+	</ul>
+</div>
 
 	<form class="bluesnap-form" id="checkout-form" name="checkoutForm" tr-bluesnap-form name="checkoutForm" novalidate="" ng-submit="submit()">
 

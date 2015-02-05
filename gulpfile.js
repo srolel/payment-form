@@ -48,7 +48,7 @@ gulp.task('sass', function () {
 gulp.task('watch', function () {
 	livereload.listen();
 	gulp.watch([app('styles/*.scss'), app('sprites/*.scss')], ['sass']);
-	gulp.watch(test('**/*.js'), ['test']);
+	gulp.watch([test('**/*.js'), app('**/*.js')], ['test']);
 })
 
 gulp.task('serve-app', function () {

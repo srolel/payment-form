@@ -1,0 +1,2103 @@
+/*
+SCSS variables are information about icon's compiled state, stored under its original file name
+
+.icon-home {
+  width: $icon-home-width;
+}
+
+The large array-like variables contain all information about a single icon
+$icon-home: x y offset_x offset_y width height total_width total_height image_path;
+
+At the bottom of this section, we provide information about the spritesheet itself
+$spritesheet: width height image $spritesheet-sprites;
+*/
+/*
+The provided mixins are intended to be used with the array-like variables
+
+.icon-home {
+  @include sprite-width($icon-home);
+}
+
+.icon-email {
+  @include sprite($icon-email);
+}
+*/
+/*
+The `sprites` mixin generates identical output to the CSS template
+  but can be overridden inside of SCSS
+
+@include sprites($spritesheet-sprites);
+*/
+/*
+SCSS variables are information about icon's compiled state, stored under its original file name
+
+.icon-home {
+  width: $icon-home-width;
+}
+
+The large array-like variables contain all information about a single icon
+$icon-home: x y offset_x offset_y width height total_width total_height image_path;
+
+At the bottom of this section, we provide information about the spritesheet itself
+$spritesheet: width height image $spritesheet-sprites;
+*/
+/*
+The provided mixins are intended to be used with the array-like variables
+
+.icon-home {
+  @include sprite-width($icon-home);
+}
+
+.icon-email {
+  @include sprite($icon-email);
+}
+*/
+/*
+The `sprites` mixin generates identical output to the CSS template
+  but can be overridden inside of SCSS
+
+@include sprites($spritesheet-sprites);
+*/
+/*
+The `sprites` mixin generates identical output to the CSS template
+  but can be overridden inside of SCSS
+
+@include sprites($spritesheet-sprites);
+*/
+.buynow-view .country-list {
+  height: 300px;
+  width: 400px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  position: absolute;
+  background: #fff;
+  padding: 0; }
+  .buynow-view .country-list .ad:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -644px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .ae:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -1956px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .af:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -2628px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .ag:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -36px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .ai:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -52px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .al:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -68px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .am:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -84px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .an:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -100px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .ao:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -116px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .ar:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -132px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .as:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -148px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .at:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -164px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .au:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -180px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .aw:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -196px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .ax:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -212px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .az:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -228px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .ba:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -244px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .bb:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -260px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .bd:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -276px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .be:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -292px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .bf:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -308px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .bg:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -324px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .bh:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -340px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .bi:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -356px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .bj:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -372px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .bm:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -388px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .bn:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -404px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .bo:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -420px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .br:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -436px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .bs:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -452px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .bt:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -468px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .bv:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -484px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .bw:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -500px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .by:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -516px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .bz:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -532px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .ca:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -548px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .catalonia:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -564px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .cc:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -580px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .cd:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -596px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .cf:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -612px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .cg:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -628px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .ch:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -9px 0px;
+    width: 11px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .ci:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -660px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .ck:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -676px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .cl:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -692px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .cm:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -708px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .cn:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -724px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .co:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -740px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .cr:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -756px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .cs:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -772px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .cu:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -788px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .cv:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -804px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .cx:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -820px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .cy:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -836px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .cz:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -852px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .de:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -868px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .dj:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -884px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .dk:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -900px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .dm:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -916px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .do:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -932px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .dz:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -948px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .ec:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -964px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .ee:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -980px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .eg:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -996px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .eh:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -1012px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .england:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -1028px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .er:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -1044px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .es:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -1060px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .et:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -1076px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .europeanunion:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -1092px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .fam:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -1108px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .fi:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -1124px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .fj:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -1140px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .fk:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -1156px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .fm:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -1172px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .fo:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -1188px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .fr:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -1204px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .ga:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -1220px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .gb:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -1236px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .gd:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -1252px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .ge:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -1268px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .gf:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -1284px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .gh:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -1300px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .gi:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -1316px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .gl:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -1332px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .gm:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -1348px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .gn:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -1364px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .gp:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -1380px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .gq:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -1396px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .gr:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -1412px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .gs:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -1428px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .gt:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -1444px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .gu:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -1460px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .gw:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -1476px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .gy:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -1492px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .hk:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -1508px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .hm:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -1524px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .hn:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -1540px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .hr:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -1556px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .ht:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -1572px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .hu:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -1588px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .id:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -1604px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .ie:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -1620px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .il:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -1636px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .in:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -1652px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .io:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -1668px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .iq:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -1684px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .ir:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -1700px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .is:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -1716px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .it:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -1732px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .jm:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -1748px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .jo:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -1764px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .jp:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -1780px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .ke:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -1796px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .kg:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -1812px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .kh:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -1828px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .ki:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -1844px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .km:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -1860px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .kn:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -1876px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .kp:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -1892px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .kr:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -1908px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .kw:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -1924px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .ky:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -1940px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .kz:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -20px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .la:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -1972px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .lb:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -1988px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .lc:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -2004px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .li:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -2020px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .lk:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -2036px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .lr:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -2052px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .ls:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -2068px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .lt:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -2084px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .lu:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -2100px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .lv:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -2116px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .ly:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -2132px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .ma:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -2148px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .mc:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -2164px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .md:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -2180px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .me:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -2196px 0px;
+    width: 16px;
+    height: 12px;
+    background-color: transparent; }
+  .buynow-view .country-list .mg:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -2212px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .mh:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -2228px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .mk:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -2244px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .ml:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -2260px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .mm:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -2276px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .mn:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -2292px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .mo:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -2308px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .mp:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -2324px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .mq:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -2340px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .mr:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -2356px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .ms:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -2372px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .mt:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -2388px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .mu:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -2404px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .mv:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -2420px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .mw:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -2436px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .mx:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -2452px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .my:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -2468px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .mz:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -2484px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .na:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -2500px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .nc:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -2516px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .ne:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -2532px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .nf:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -2548px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .ng:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -2564px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .ni:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -2580px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .nl:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -2596px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .no:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -2612px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .np:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: 0px 0px;
+    width: 9px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .nr:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -2644px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .nu:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -2660px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .nz:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -2676px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .om:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -2692px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .pa:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -2708px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .pe:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -2724px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .pf:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -2740px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .pg:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -2756px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .ph:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -2772px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .pk:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -2788px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .pl:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -2804px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .pm:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -2820px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .pn:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -2836px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .pr:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -2852px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .ps:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -2868px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .pt:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -2884px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .pw:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -2900px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .py:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -2916px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .qa:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -2932px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .re:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -2948px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .ro:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -2964px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .rs:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -2980px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .ru:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -2996px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .rw:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -3012px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .sa:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -3028px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .sb:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -3044px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .sc:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -3060px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .scotland:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -3076px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .sd:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -3092px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .se:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -3108px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .sg:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -3124px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .sh:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -3140px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .si:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -3156px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .sj:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -3172px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .sk:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -3188px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .sl:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -3204px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .sm:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -3220px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .sn:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -3236px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .so:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -3252px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .sr:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -3268px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .st:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -3284px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .sv:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -3300px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .sy:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -3316px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .sz:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -3332px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .tc:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -3348px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .td:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -3364px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .tf:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -3380px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .tg:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -3396px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .th:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -3412px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .tj:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -3428px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .tk:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -3444px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .tl:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -3460px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .tm:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -3476px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .tn:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -3492px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .to:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -3508px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .tr:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -3524px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .tt:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -3540px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .tv:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -3556px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .tw:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -3572px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .tz:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -3588px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .ua:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -3604px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .ug:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -3620px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .um:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -3636px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .us:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -3652px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .uy:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -3668px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .uz:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -3684px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .va:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -3700px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .vc:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -3716px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .ve:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -3732px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .vg:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -3748px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .vi:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -3764px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .vn:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -3780px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .vu:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -3796px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .wales:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -3812px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .wf:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -3828px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .ws:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -3844px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .ye:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -3860px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .yt:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -3876px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .za:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -3892px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .zm:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -3908px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .zw:before {
+    content: "";
+    display: inline-block;
+    background-image: url(/sprites/flags.png);
+    background-position: -3924px 0px;
+    width: 16px;
+    height: 11px;
+    background-color: transparent; }
+  .buynow-view .country-list .flag:before {
+    margin-right: 4px; }
+  .buynow-view .country-list .selected {
+    background-color: gainsboro; }
+.buynow-view .cards-icons .amex {
+  background-image: url(/sprites/cards.png);
+  background-position: 0px 0px;
+  width: 39px;
+  height: 25px;
+  background-color: transparent; }
+  .buynow-view .cards-icons .amex.selected {
+    background-position: 0px -25px; }
+.buynow-view .cards-icons .discover {
+  background-image: url(/sprites/cards.png);
+  background-position: -39px 0px;
+  width: 39px;
+  height: 25px;
+  background-color: transparent; }
+  .buynow-view .cards-icons .discover.selected {
+    background-position: -39px -25px; }
+.buynow-view .cards-icons .jcb {
+  background-image: url(/sprites/cards.png);
+  background-position: -78px 0px;
+  width: 39px;
+  height: 25px;
+  background-color: transparent; }
+  .buynow-view .cards-icons .jcb.selected {
+    background-position: -78px -25px; }
+.buynow-view .cards-icons .mastercard {
+  background-image: url(/sprites/cards.png);
+  background-position: -117px 0px;
+  width: 39px;
+  height: 25px;
+  background-color: transparent; }
+  .buynow-view .cards-icons .mastercard.selected {
+    background-position: -117px -25px; }
+.buynow-view .cards-icons .visa {
+  background-image: url(/sprites/cards.png);
+  background-position: -156px 0px;
+  width: 39px;
+  height: 25px;
+  background-color: transparent; }
+  .buynow-view .cards-icons .visa.selected {
+    background-position: -156px -25px; }
+.buynow-view .cards-icons .card-icon {
+  display: inline-block; }
+.buynow-view form.bluesnap-form ul {
+  list-style-type: none; }
+  .buynow-view form.bluesnap-form ul li {
+    margin-bottom: 10px; }
+    .buynow-view form.bluesnap-form ul li:nth-last-child(n+3) {
+      display: inline-block;
+      margin-right: 40px; }

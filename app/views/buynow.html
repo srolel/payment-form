@@ -1,0 +1,44 @@
+<div class="buynow-view">
+<div ng-click="toggleDropdown(true, $event)">{{selectedCountry.name}}</div>
+<ul class="country-list" ng-show="dropdownShown">
+	<li ng-repeat="country in countries track by country.code" class="flag {{country.abbr}}" ng-class="{selected: isCountrySelected(country)}" ng-click="selectCountry(country)">{{country.name}}</li>
+</ul>
+
+	<form class="bluesnap-form" id="checkout-form" name="checkoutForm" tr-bluesnap-form name="checkoutForm" novalidate="" ng-submit="submit()">
+
+	  		<tt>$valid = {{checkoutForm.$valid}}</tt><br>
+
+	  		<div class="cards-icons">
+	  			<div class="card-icon {{card}}" ng-repeat="card in cards" ng-class="{selected: isCardSelected(card)}"></div>
+	  		</div>
+			card type: {{type}}
+		<ul>
+			<li>
+				<h2>Card Number</h2>
+				number: {{card}}<br>
+				<tr-bluesnap-input ng-model="card" type-model="type" is-encrypted="true"></tr-form-input>
+			</li>
+			<li>
+				<h2>CVC</h2>
+				cvc: {{cvc}}<br>
+				<tr-bluesnap-input ng-model="cvc" type-model="type" is-encrypted="true"></tr-form-input>
+		    </li>
+			<li>
+				<h2>Expiry</h2>
+				expiry: {{expiry}}<br>
+				<tr-bluesnap-input ng-model="expiry"></tr-form-input>
+			</li>
+
+			<li>
+				<h2>Full Name</h2>
+				<input type="text" required class="form-control" name="fullName" tr-form-input ng-model="fullName">
+			</li>
+			<li>
+				<h2>Email Address</h2>
+				<input type="email" required class="form-control" name="email" tr-form-input ng-model="email">
+			</li>
+		</ul>
+
+		<button type="submit">submit</button>
+	</form>
+</div>

@@ -1,0 +1,122 @@
+@import '../sprites/flags';
+@import '../sprites/cards';
+
+@mixin sprite-width($sprite) {
+  width: nth($sprite, 5);
+}
+
+@mixin sprite-height($sprite, $part:false) {
+  @if $part {
+      height: nth($sprite, 6)/2;    
+  } @else {
+      height: nth($sprite, 6);    
+  }
+}
+
+
+@mixin sprite-position($sprite, $part:false) {
+  $sprite-offset-x: nth($sprite, 3);
+  $sprite-offset-y: nth($sprite, 4);
+  @if $part == "bottom" {
+    $sprite-height: nth($sprite, 6);
+    $_sprite-offset-y: $sprite-offset-y - $sprite-height/2;
+    background-position: $sprite-offset-x  $_sprite-offset-y;   
+  } @else {
+    background-position: $sprite-offset-x  $sprite-offset-y;    
+  }
+}
+
+@mixin sprite-image($sprite) {
+  $sprite-image: nth($sprite, 9);
+  background-image: url(#{$sprite-image});
+}
+
+@mixin sprite($sprite, $pseudo:false, $part:false) {
+  @if $pseudo {
+    content: $pseudo;
+    display: inline-block;
+  }
+  @include sprite-image($sprite);
+  @include sprite-position($sprite, $part);
+  @include sprite-width($sprite);
+  @include sprite-height($sprite, $part);
+  background-color: transparent;
+}
+
+/*
+The `sprites` mixin generates identical output to the CSS template
+  but can be overridden inside of SCSS
+
+@include sprites($spritesheet-sprites);
+*/
+@mixin sprites($sprites, $pseudo:false, $parts:false) {
+  @each $sprite in $sprites {
+    $sprite-name: nth($sprite, 10);
+    .#{$sprite-name} {
+      @include sprite($sprite, $pseudo, "top");
+      @if $parts {
+        &.selected {
+          @include sprite-position($sprite, "bottom")
+        }
+      }
+    }
+  }
+}
+
+@mixin sprites-before($sprites) {
+  @each $sprite in $sprites {
+    $sprite-name: nth($sprite, 10);
+    .#{$sprite-name} {
+      &:before {
+        @include sprite($sprite, "");
+      }
+    }
+  }
+}
+
+.buynow-view {
+  .country-list {
+    height: 300px;
+    width: 400px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    @include sprites-before($flags-sprites);
+
+    position: absolute;
+    background: #fff;
+    padding: 0;
+
+    .flag:before {
+      margin-right: 4px;
+    }
+
+    .selected {
+      background-color: gainsboro;
+    }
+
+
+  }
+
+  .cards-icons {
+      @include sprites($cards-sprites, false, true);
+
+      .card-icon {
+        display: inline-block;
+      }
+  }
+  form.bluesnap-form {
+    ul {
+      list-style-type: none;
+
+      li {
+        margin-bottom: 10px;
+        &:nth-last-child(n+3) {
+          display: inline-block;
+          margin-right:40px;
+        }
+        
+      }
+    }
+  }
+}
+

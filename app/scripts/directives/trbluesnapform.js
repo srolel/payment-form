@@ -10,31 +10,38 @@ angular.module('paymentApp')
 	.directive('trBluesnapForm', function (BlueSnap) {
 		return {
 			restrict: 'A',
-			controller: function ($scope, $element) {
+			controllerAs: 'formCtrl',
+			controller: function ($scope, $element, $document) {
+
+				var formName = $element.attr('name');
 
 				this.getForm = function getForm() {
-					return $scope[$element.attr('name')];
+					return $scope[formName];
+				};
+
+				var processes = {
+					fullName: function processFullName(fullName) {
+						var names = fullName.split(' ');
+						return [{
+							name: 'firstName',
+							value: names[0]
+						}, {
+							name: 'lastName',
+							value: names[1]
+						}]
+					}
 				}
+
+				this.submit = function submit() {
+					var additionalFormInputs = BlueSnap.processAdditionalInputs(processes, scope);
+					BlueSnap.addInputsToForm(formName, additionalFormInputs)
+					var formData = BlueSnap.getFormData(formName);
+
+				};
 			},
 			link: function postLink(scope, element, attrs) {
-
 				var formId = element.attr('id');
 				BlueSnap.init(formId);
-
-				scope.submit = function submit() {
-
-				}
-
-				scope.$watch('fullName', function (val) {
-					if (!val) return;
-					var names = val.split(' ');
-					scope.firstName = names[0];
-					scope.lastName = names[0];
-				})
-
-				scope.$watch('number', function (val) {
-					if (!val) return;
-				})
 			}
 		};
 	});

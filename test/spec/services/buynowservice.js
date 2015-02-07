@@ -73,6 +73,8 @@ describe('Service: BuynowService', function () {
 
 		expect(BuynowService.getCountries('usa', null, 'name')[0]).toEqual('United States');
 
+		expect(BuynowService.getCountries('usa', {}, 'name')).toBeUndefined();
+
 	})
 
 });

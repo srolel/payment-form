@@ -8,7 +8,7 @@
  * Service in the paymentApp.
  */
 angular.module('paymentApp')
-	.service('StateService', function (BuynowService) {
+	.service('StateService', function () {
 		return {
 			getCookie: function () {
 				return 'Israel';

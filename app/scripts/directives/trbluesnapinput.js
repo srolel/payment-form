@@ -7,7 +7,7 @@
  * # trBluesnapInput
  */
 angular.module('paymentApp')
-	.directive('trBluesnapInput', function (KitService) {
+	.directive('trBluesnapInput', function (BlueSnap) {
 		return {
 			templateUrl: 'views/trbluesnapinput.html',
 			restrict: 'E',
@@ -22,15 +22,10 @@ angular.module('paymentApp')
 			link: function (scope, element, attrs, formCtrl) {
 
 				if (scope.isEncrypted) {
-					element.find('input').attr('data-bluesnap', getEncryptedName(scope.name))
+					element.find('input').attr('data-bluesnap', BlueSnap.getEncryptedName(scope.name))
 				}
 
 				scope.input = formCtrl.getForm()[scope.name];
-
-				function getEncryptedName(name) {
-					return 'encrypted' + KitService.capitalize(name);
-				}
-
 			}
 		};
 	});

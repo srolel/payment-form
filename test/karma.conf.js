@@ -20,6 +20,7 @@ module.exports = function (config) {
 		files: [
 			// bower:js
 			// endbower
+			'test/polyfills.js',
 			'bower_components/angular/angular.js',
 			'bower_components/angular-mocks/angular-mocks.js',
 			'bower_components/angular-payments/payments.js',

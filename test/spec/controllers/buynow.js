@@ -17,6 +17,7 @@ describe('Controller: BuynowCtrl', function () {
 	}));
 
 	it('should have a list of countries', function () {
+		scope.$apply();
 		expect(scope.countries.length).toBeGreaterThan(0);
 		expect(scope.selectedCountry).toEqual(jasmine.objectContaining({
 			abbr: 'il',

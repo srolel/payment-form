@@ -1,7 +1,6 @@
 var gulp = require('gulp');
 var sass = require('gulp-sass');
 var gutil = require('gulp-util');
-var run = require('gulp-run');
 var webserver = require('gulp-webserver');
 var plumber = require('gulp-plumber');
 var livereload = require('gulp-livereload');

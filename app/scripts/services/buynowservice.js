@@ -21,76 +21,78 @@ angular.module('paymentApp')
 
 		//country - what to search by, field - what attribute of the lookup ersult to return, 
 		//search - boolean to indicate search, searchBy - attribute to search by (name, code etc.)
+
+		var getCompFn = function (matcherFn) {
+			matcherFn = typeof matcherFn === 'function' ? matcherFn : function (a, b) {
+				return a === b;
+			};
+			return function compFn(a, b) {
+				//if a is object, array or function, call compFn on its members and return if one of the calls returned true
+				if (typeof a === 'object' || typeof a === 'function') {
+					return !!Object.keys(a).map(function (key) {
+						return compFn(a[key], b);
+					}).filter(Boolean).length;
+				}
+				//check for case-insensitive string match
+				return matcherFn(a, b);
+
+			};
+		}
+
 		var getCountry = this.getCountry = function getCountry(country, field, search, searchBy) {
 
 			if (!country) return null;
 
 			country = country.toString();
 
-			//Strict match vs partial match
-			var compFn = search ? function (a, b) {
-				if (!a || !b || typeof a !== 'string' || typeof b !== 'string') return errorService.typeError('invalid arguments');
+			var isMatch = search ? function (a, b) {
+					return a.search(new RegExp(b)) > -1;
+				} : function (a, b) {
+					return a === b;
+				}
+				//Strict match vs partial match
+			var matcherFn = function (a, b) {
+				if (typeof a !== 'string' || typeof b !== 'string') return;
 				a = a.toLowerCase(), b = b.toLowerCase();
-				return a.search(new RegExp(b, 'i')) > -1
-			} : function (a, b) {
-				if (!a || !b) return errorService.typeError('invalid arguments');
-				a = a.toLowerCase(), b = b.toLowerCase();
-				return a === b;
+				return isMatch(a, b);
 			}
 
+			var compFn = getCompFn(matcherFn);
+
 			//for convenience
-			if (typeof searchBy === 'string') searchBy = [searchBy];
-
-			var searchByArr = searchBy || ['name', 'code', 'abbr'];
-
-			if (!angular.isArray(searchByArr)) return errorService.typeError('searchBy should be an array or a string');
+			searchBy = angular.isArray(searchBy) || typeof searchBy === 'string' ? searchBy : true;
 
 			//filter countries
 			var result = codes.filter(function (c) {
 
 				//properties to search by
-
-				if (searchByArr.map(function (a) {
-						return compFn(c[a], country);
+				if (Object.keys(c).map(function (key) {
+						if (searchBy === true || searchBy.indexOf(key) > -1) {
+							return compFn(c[key], country);
+						}
 					}).filter(Boolean).length) {
 					return true;
 				}
-
-				//searching by alias string/array, ignore if search by specific properties requested
-				if (!c.alias || searchBy) return;
-
-				if (typeof c.alias === 'string' && compFn(c.alias, country)) {
-					return true;
-				}
-
-				if (angular.isArray(c['alias'])) {
-					for (var i = 0; i < c['alias'].length; i++) {
-						if (compFn(c.alias[i], country)) {
-							return true;
-						}
-					}
-				}
 			});
-
-			var _field = {
-				name: 'name',
-				id: 'code',
-				abbr: 'abbr',
-				0: 'name',
-				1: 'abbr',
-				2: 'code',
-				code: 'code'
-			}[field || 1];
 
 			//map to relevant requested properties
 			if (field !== 'obj') {
+				var _field = {
+					name: 'name',
+					id: 'code',
+					abbr: 'abbr',
+					0: 'name',
+					1: 'abbr',
+					2: 'code',
+					code: 'code'
+				}[field || 1];
+
 				result = result.map(function (res) {
 					return res[_field];
 				})
 			}
 
 			return search ? result : result[0] || null;
-
 		}
 
 		//either get all countries (when search is falsey) or search for countries

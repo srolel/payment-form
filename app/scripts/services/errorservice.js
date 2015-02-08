@@ -33,4 +33,8 @@ angular.module('paymentApp')
 		this.typeError = function (message) {
 			this.error(TypeError, message);
 		}
+
+		this.warn = function (message) {
+			$log.warn(message);
+		}
 	});

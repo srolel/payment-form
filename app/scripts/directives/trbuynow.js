@@ -12,16 +12,8 @@ angular.module('paymentApp')
 			templateUrl: 'views/buynow.html',
 			restrict: 'E',
 			controller: 'BuynowCtrl',
+			controllerAs: 'BuynowCtrl',
 			link: function postLink(scope, element, attrs) {
-
-				var deRegister = $document.on('click', function (e) {
-					scope.dropdownShown = false;
-					scope.$apply();
-				});
-
-				scope.$on('$destroy', function () {
-					deRegister();
-				});
 
 
 

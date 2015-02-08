@@ -17,13 +17,16 @@ angular.module('paymentApp')
 				isEncrypted: '=',
 				model: '=ngModel',
 				name: '@ngModel',
-				typeModel: '='
+				typeModel: '=',
+				type: '@'
 			},
 			link: function (scope, element, attrs, formCtrl) {
 
 				if (scope.isEncrypted) {
 					element.find('input').attr('data-bluesnap', BlueSnap.getEncryptedName(scope.name))
 				}
+
+				scope.type = scope.type || 'text';
 
 				scope.input = formCtrl.getForm()[scope.name];
 			}

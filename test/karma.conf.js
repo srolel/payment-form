@@ -23,7 +23,7 @@ module.exports = function (config) {
 			'test/polyfills.js',
 			'bower_components/angular/angular.js',
 			'bower_components/angular-mocks/angular-mocks.js',
-			'bower_components/angular-payments/payments.js',
+			'bower_components/angular-payments/lib/angular-payments.js',
 			'app/scripts/**/*.js',
 			'test/mock/**/*.js',
 			'test/spec/**/*.js'

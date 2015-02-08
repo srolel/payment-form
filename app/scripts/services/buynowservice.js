@@ -14,7 +14,31 @@ angular.module('paymentApp')
 
 		this.getCards = function getCards() {
 			return cards;
-		}
+		};
+
+		var paymentOpts = [{
+			name: 'Credit & Debit Cards',
+			id: 'credit-card',
+			isSelected: true
+		}, {
+			name: 'PayPal',
+			id: 'paypal',
+			isSelected: false
+		}];
+
+		this.getPaymentOpts = function () {
+			return paymentOpts;
+		};
+
+		this.isPaymentSelected = function isPaymentSelected(opt) {
+			return opt.isSelected;
+		};
+		this.selectPayment = function selectPayment(opt) {
+			paymentOpts.forEach(function (o) {
+				o.isSelected = false;
+			})
+			opt.isSelected = true;
+		};
 
 		//Countries Value service is an array of country objects - {name, code, abbr}
 		var codes = Countries;
@@ -39,6 +63,10 @@ angular.module('paymentApp')
 			};
 		}
 
+		var isArrayOrString = function isArrayOrString(x) {
+			return angular.isArray(x) || typeof x === 'string';
+		}
+
 		var getCountry = this.getCountry = function getCountry(country, field, search, searchBy) {
 
 			if (!country) return null;
@@ -60,14 +88,14 @@ angular.module('paymentApp')
 			var compFn = getCompFn(matcherFn);
 
 			//for convenience
-			searchBy = angular.isArray(searchBy) || typeof searchBy === 'string' ? searchBy : true;
+			searchBy = isArrayOrString(searchBy) ? searchBy : true;
 
 			//filter countries
 			var result = codes.filter(function (c) {
 
 				//properties to search by
 				if (Object.keys(c).map(function (key) {
-						if (searchBy === true || searchBy.indexOf(key) > -1) {
+						if ((searchBy === true && key !== 'sub') || (isArrayOrString(searchBy) && searchBy.indexOf(key) > -1)) {
 							return compFn(c[key], country);
 						}
 					}).filter(Boolean).length) {
@@ -255,7 +283,52 @@ angular.module('paymentApp')
 	}, {
 		"abbr": "ca",
 		"code": "124",
-		"name": "Canada"
+		"name": "Canada",
+		sub: {
+			"province": [{
+				"abbr": "AB",
+				"name": "Alberta"
+			}, {
+				"abbr": "BC",
+				"name": "British Columbia"
+			}, {
+				"abbr": "LB",
+				"name": "Labrador"
+			}, {
+				"abbr": "MB",
+				"name": "Manitoba"
+			}, {
+				"abbr": "NB",
+				"name": "New Brunswick"
+			}, {
+				"abbr": "NF",
+				"name": "Newfoundland"
+			}, {
+				"abbr": "NS",
+				"name": "Nova Scotia"
+			}, {
+				"abbr": "NU",
+				"name": "Nunavut"
+			}, {
+				"abbr": "NW",
+				"name": "Northwest Territories"
+			}, {
+				"abbr": "ON",
+				"name": "Ontario"
+			}, {
+				"abbr": "PE",
+				"name": "Prince Edward Island"
+			}, {
+				"abbr": "QC",
+				"name": "Quebec"
+			}, {
+				"abbr": "SK",
+				"name": "Saskatchewen"
+			}, {
+				"abbr": "YU",
+				"name": "Yukon"
+			}]
+		}
 	}, {
 		"abbr": "cv",
 		"code": "132",
@@ -1013,7 +1086,163 @@ angular.module('paymentApp')
 		"abbr": "us",
 		"code": "840",
 		"name": "United States",
-		"alias": "usa"
+		"alias": "usa",
+		sub: {
+			"state": [{
+				"abbr": "AL",
+				"name": "Alabama"
+			}, {
+				"abbr": "AK",
+				"name": "Alaska"
+			}, {
+				"abbr": "AZ",
+				"name": "Arizona"
+			}, {
+				"abbr": "AR",
+				"name": "Arkansas"
+			}, {
+				"abbr": "CA",
+				"name": "California"
+			}, {
+				"abbr": "CO",
+				"name": "Colorado"
+			}, {
+				"abbr": "CT",
+				"name": "Connecticut"
+			}, {
+				"abbr": "DC",
+				"name": "District of Columbia"
+			}, {
+				"abbr": "DE",
+				"name": "Delaware"
+			}, {
+				"abbr": "FL",
+				"name": "Florida"
+			}, {
+				"abbr": "GA",
+				"name": "Georgia"
+			}, {
+				"abbr": "HI",
+				"name": "Hawaii"
+			}, {
+				"abbr": "ID",
+				"name": "Idaho"
+			}, {
+				"abbr": "IL",
+				"name": "Illinois"
+			}, {
+				"abbr": "IN",
+				"name": "Indiana"
+			}, {
+				"abbr": "IA",
+				"name": "Iowa"
+			}, {
+				"abbr": "KS",
+				"name": "Kansas"
+			}, {
+				"abbr": "KY",
+				"name": "Kentucky"
+			}, {
+				"abbr": "LA",
+				"name": "Louisiana"
+			}, {
+				"abbr": "ME",
+				"name": "Maine"
+			}, {
+				"abbr": "MD",
+				"name": "Maryland"
+			}, {
+				"abbr": "MA",
+				"name": "Massachusetts"
+			}, {
+				"abbr": "MI",
+				"name": "Michigan"
+			}, {
+				"abbr": "MN",
+				"name": "Minnesota"
+			}, {
+				"abbr": "MS",
+				"name": "Mississippi"
+			}, {
+				"abbr": "MO",
+				"name": "Missouri"
+			}, {
+				"abbr": "MT",
+				"name": "Montana"
+			}, {
+				"abbr": "NE",
+				"name": "Nebraska"
+			}, {
+				"abbr": "NV",
+				"name": "Nevada"
+			}, {
+				"abbr": "NH",
+				"name": "New Hampshire"
+			}, {
+				"abbr": "NJ",
+				"name": "New Jersey"
+			}, {
+				"abbr": "NM",
+				"name": "New Mexico"
+			}, {
+				"abbr": "NY",
+				"name": "New York"
+			}, {
+				"abbr": "NC",
+				"name": "North Carolina"
+			}, {
+				"abbr": "ND",
+				"name": "North Dakota"
+			}, {
+				"abbr": "OH",
+				"name": "Ohio"
+			}, {
+				"abbr": "OK",
+				"name": "Oklahoma"
+			}, {
+				"abbr": "OR",
+				"name": "Oregon"
+			}, {
+				"abbr": "PA",
+				"name": "Pennsylvania"
+			}, {
+				"abbr": "RI",
+				"name": "Rhode Island"
+			}, {
+				"abbr": "SC",
+				"name": "South Carolina"
+			}, {
+				"abbr": "SD",
+				"name": "South Dakota"
+			}, {
+				"abbr": "TN",
+				"name": "Tennessee"
+			}, {
+				"abbr": "TX",
+				"name": "Texas"
+			}, {
+				"abbr": "UT",
+				"name": "Utah"
+			}, {
+				"abbr": "VT",
+				"name": "Vermont"
+			}, {
+				"abbr": "VA",
+				"name": "Virginia"
+			}, {
+				"abbr": "WA",
+				"name": "Washington"
+			}, {
+				"abbr": "WV",
+				"name": "West Virginia"
+			}, {
+				"abbr": "WI",
+				"name": "Wisconsin"
+			}, {
+				"abbr": "WY",
+				"name": "Wyoming"
+			}]
+		}
 	}, {
 		"abbr": "um",
 		"code": "581",
@@ -1066,4 +1295,157 @@ angular.module('paymentApp')
 		"abbr": "zw",
 		"code": "716",
 		"name": "Zimbabwe"
+	}]).value('States', [{
+		"abbr": "AL",
+		"name": "Alabama"
+	}, {
+		"abbr": "AK",
+		"name": "Alaska"
+	}, {
+		"abbr": "AZ",
+		"name": "Arizona"
+	}, {
+		"abbr": "AR",
+		"name": "Arkansas"
+	}, {
+		"abbr": "CA",
+		"name": "California"
+	}, {
+		"abbr": "CO",
+		"name": "Colorado"
+	}, {
+		"abbr": "CT",
+		"name": "Connecticut"
+	}, {
+		"abbr": "DC",
+		"name": "District of Columbia"
+	}, {
+		"abbr": "DE",
+		"name": "Delaware"
+	}, {
+		"abbr": "FL",
+		"name": "Florida"
+	}, {
+		"abbr": "GA",
+		"name": "Georgia"
+	}, {
+		"abbr": "HI",
+		"name": "Hawaii"
+	}, {
+		"abbr": "ID",
+		"name": "Idaho"
+	}, {
+		"abbr": "IL",
+		"name": "Illinois"
+	}, {
+		"abbr": "IN",
+		"name": "Indiana"
+	}, {
+		"abbr": "IA",
+		"name": "Iowa"
+	}, {
+		"abbr": "KS",
+		"name": "Kansas"
+	}, {
+		"abbr": "KY",
+		"name": "Kentucky"
+	}, {
+		"abbr": "LA",
+		"name": "Louisiana"
+	}, {
+		"abbr": "ME",
+		"name": "Maine"
+	}, {
+		"abbr": "MD",
+		"name": "Maryland"
+	}, {
+		"abbr": "MA",
+		"name": "Massachusetts"
+	}, {
+		"abbr": "MI",
+		"name": "Michigan"
+	}, {
+		"abbr": "MN",
+		"name": "Minnesota"
+	}, {
+		"abbr": "MS",
+		"name": "Mississippi"
+	}, {
+		"abbr": "MO",
+		"name": "Missouri"
+	}, {
+		"abbr": "MT",
+		"name": "Montana"
+	}, {
+		"abbr": "NE",
+		"name": "Nebraska"
+	}, {
+		"abbr": "NV",
+		"name": "Nevada"
+	}, {
+		"abbr": "NH",
+		"name": "New Hampshire"
+	}, {
+		"abbr": "NJ",
+		"name": "New Jersey"
+	}, {
+		"abbr": "NM",
+		"name": "New Mexico"
+	}, {
+		"abbr": "NY",
+		"name": "New York"
+	}, {
+		"abbr": "NC",
+		"name": "North Carolina"
+	}, {
+		"abbr": "ND",
+		"name": "North Dakota"
+	}, {
+		"abbr": "OH",
+		"name": "Ohio"
+	}, {
+		"abbr": "OK",
+		"name": "Oklahoma"
+	}, {
+		"abbr": "OR",
+		"name": "Oregon"
+	}, {
+		"abbr": "PA",
+		"name": "Pennsylvania"
+	}, {
+		"abbr": "RI",
+		"name": "Rhode Island"
+	}, {
+		"abbr": "SC",
+		"name": "South Carolina"
+	}, {
+		"abbr": "SD",
+		"name": "South Dakota"
+	}, {
+		"abbr": "TN",
+		"name": "Tennessee"
+	}, {
+		"abbr": "TX",
+		"name": "Texas"
+	}, {
+		"abbr": "UT",
+		"name": "Utah"
+	}, {
+		"abbr": "VT",
+		"name": "Vermont"
+	}, {
+		"abbr": "VA",
+		"name": "Virginia"
+	}, {
+		"abbr": "WA",
+		"name": "Washington"
+	}, {
+		"abbr": "WV",
+		"name": "West Virginia"
+	}, {
+		"abbr": "WI",
+		"name": "Wisconsin"
+	}, {
+		"abbr": "WY",
+		"name": "Wyoming"
 	}])

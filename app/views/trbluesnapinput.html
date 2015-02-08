@@ -1,8 +1,4 @@
-<div>
-	<input type="text" required ng-model="model" name="{{name}}" payments-validate="{{name}}" payments-type-model="typeModel"/>  
+<div class="tr-bluesnap-input">
+	<input type="{{type}}" required ng-model="model" name="{{name}}" payments-validate="{{name}}" payments-type-model="typeModel"/>  
 	  <span class="error" ng-show="myForm.input.$error.required">Required!</span><br>
-	  <tt>userType = {{model}}</tt><br>
-	  <tt>input.$valid = {{input.$valid}}</tt><br>
-	  <tt>input.$error = {{input.$error}}</tt><br>
-	  <tt>$error.required = {{!!$error.required}}</tt><br>
 </div>

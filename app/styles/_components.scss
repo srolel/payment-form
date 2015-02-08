@@ -1,0 +1,926 @@
+@mixin view-button($width) {
+    margin: 0;
+    padding: 0;
+    button {
+        background: #fff;
+        border: 1px solid #d7d7d7;
+        color: #8d8d8d;
+        font-size: 16px;
+        height: 40px;
+        line-height: 40px;
+        padding: 0;
+        text-align: left;
+        width: $width;
+    }
+    button:before {
+        content: url("/images/buttons/view-button-after.png");
+        display: none;
+        height: 40px;
+        margin-left: $width - 2px;
+        margin-top: -1px;
+        position: absolute;
+        width: 9px;
+    }
+    .text,
+    .img {
+        display: inline-block;
+        vertical-align: top;
+    }
+    .img {
+        border-right: 1px solid #d7d7d7;
+        line-height: 50px;
+        opacity: .5;
+        text-align: center;
+        width: 52px;
+    }
+    .text {
+        padding-left: 12px;
+    }
+    button.active {
+        background: url("/images/buttons/view-button-bg.png");
+        border-color: #a3a3a3;
+        color: #007dd4;
+        .img {
+            opacity: 1;
+        }
+    }
+    button.active:before {
+        display: block;
+    }
+}
+
+@mixin graph-menu {
+    h1, .pseudo-h1 {
+        color: #353535;
+        font-size: 15px;
+        font-weight: bold;
+        margin: 22px 0 6px;
+    }
+    h1:after, .pseudo-h1:after {
+        content: ":";
+    }
+    ul {
+        list-style-type: none;
+        margin: 0 0 6px;
+        padding: 0;
+    }
+    li.menu {
+        @include view-button(315px);
+    }
+    label.menu {
+        background: #fff;
+        border: 1px solid #d7d7d7;
+        border-top-width: 0;
+        display: block;
+        font-size: 12px;
+        height: 30px;
+        line-height: 30px;
+        overflow: hidden;
+        @include calc(width, "100%");
+        input.menu {
+            display: none;
+        }
+        .button {
+            color: $tr-inactive-color;
+            .img-wrapper {
+                border-right: 1px solid #d7d7d7;
+                display: inline-block;
+                height: 100%;
+                line-height: 44px;
+                text-align: center;
+                vertical-align: top;
+                width: 41px;
+                img {
+                    opacity: .5;
+                }
+            }
+            .txt-wrapper {
+                display: inline-block;
+                height: 100%;
+                padding: 1px 5px;
+                vertical-align: top;
+                text-align: left;
+                width: 113px;
+                @include calc(width, "100% - 45px");
+            }
+        }
+        :checked + .button {
+            color: $tr-active-color;
+            .img-wrapper {
+                img {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+    li:first-child {
+        label.menu {
+            border-top-width: 1px;
+        }
+    }
+    .alt-1 {
+        label.menu {
+            border-color: #a3a3a3;
+            height: 34px;
+            line-height: 34px;
+            :checked + .button {
+                background: url("/images/graph-menu-selected-bg.png") repeat;
+            }
+            :checked + .button:before {
+                content: url("/images/graph-menu-selected-after.png");
+                margin-left: 184px;
+                position: absolute;
+            }
+        }
+        label.menu.multi-line {
+            line-height: normal;
+        }
+    }
+    .alt-2 {
+        border: 1px solid #d7d7d7;
+        label.menu {
+            border: 0;
+            height: 28px;
+            line-height: 28px;
+            padding-left: 5px;
+            .img-wrapper {
+                border: 0;
+                height: 29px;
+                opacity: .2;
+                line-height: 29px;
+                width: 15px;
+            }
+        }
+    }
+    input[type=checkbox] + .button {
+        .txt-wrapper {
+            padding: 0;
+        }
+        .txt-wrapper:before {
+            margin-right: 5px;
+            opacity: .5;
+        }
+        .img-wrapper {
+            border: 0;
+            height: 30px;
+            line-height: 30px;
+            width: 25px;
+            img {
+                opacity: 0;
+            }
+        }
+    }
+    input[type=checkbox]:checked + .button {
+        color: #189bdf;
+        .txt-wrapper:before {
+            opacity: 1;
+            margin-right: 5px;
+        }
+        .img-wrapper {
+            img {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+@mixin expert-img-bubble {
+    img {
+        border: 4px solid;
+        border-radius: 50%;
+    }
+    img.Buy,
+    img.BUY {
+        border-color: $rating-buy-color;
+    }
+    img.Hold,
+    img.HOLD {
+        border-color: $rating-hold-color;
+    }
+    img.Sell,
+    img.SELL {
+        border-color: $rating-sell-color;
+    }
+    img.top {
+        border-color: $color-top;
+    }
+    img.S {
+        border-color: rgb(144, 64, 143);
+    }
+    img.OB {
+        border-color: rgb(72, 186, 204);
+    }
+    img.NB {
+        border-color: rgb(162, 162, 162);
+    }
+    img.B {
+        border-color: #17929a;
+    }
+    img.AB {
+        border-color: #545454;
+    }
+    img.AS {
+        border-color: #545454;
+    }
+    img.NB {
+        border-color: #9f9f9f;
+    }
+    img.NS {
+        border-color: #c0c0c0;
+    }
+    img.OE {
+        border-color: #dcdcdc;
+    }
+    img.OS {
+        border-color: #a666a5;
+    }
+}
+
+@mixin rating-bubble($width, $height) {
+    .bubble {
+        background-image: url("/images/stock/rating-bubble-" + $width + ".png");
+        color: #fbfbfb;
+        font-size: 18px;
+        height: $height;
+        text-align: center;
+        width: $width;
+        .rating {
+            font-size: 18px;
+            line-height: 31px;
+            position: relative;
+            top: 2px;
+            text-transform: uppercase;
+        }
+        .priceTarget {
+            font-size: 10px;
+            font-weight: bold;
+        }
+    }
+    .bubble.no-price-target {
+        .rating {
+            line-height: 43px;
+        }
+        .priceTarget {
+            display: none;
+        }
+    }
+    .bubble.Buyת
+    .bubble.BUY {
+        background-position: 0 0;
+    }
+    .bubble.Hold,
+    .bubble.HOLD {
+        background-position: 0 - $height * 2;
+    }
+    .bubble.Sell,
+    .bubble.SELL {
+        background-position: 0 - $height * 1;
+    }
+}
+
+@mixin input-range-poly-fill($thumb-img, $thumb-width, $thumb-height, $xOffset, $yOffset) {
+    text-align: center;
+    input {
+        display: none;
+    }
+    label {
+        display: inline-block;
+        height: $thumb-height;
+        margin: 0;
+        width: $thumb-width;
+    }
+    .thumb {
+        display: inline-block;
+        height: $thumb-height;
+        position: relative;
+        left: $xOffset;
+        top: $yOffset;
+        width: $thumb-width;
+    }
+    :checked + .thumb {
+        background: url($thumb-img) no-repeat;
+    }
+}
+
+@mixin input-range($thumb-img, $thumb-width, $thumb-height, $xOffset, $yOffset) {
+    .flst {
+        background: #fff;
+        margin: 0 auto 6px;
+        .ranking {
+            background: url("/images/lang/" + $lang + "/d3overview/input-ranking.png") 50% 100% no-repeat;
+            display: block;
+            height: 51px;
+            margin: auto;
+            padding-top: 40px;
+            text-align: center;
+            width: 149px;
+        }
+        .h {
+            color: #189bdf;
+            text-align: center;
+            font-size: 12px;
+        }
+        input {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            box-sizing: content-box;
+            background: none;
+            display: block;
+            height: 23px;
+            margin: auto;
+            width: 107px;
+        }
+        input:focus {
+            outline: 0;
+        }
+        input::-webkit-slider-thumb {
+            @include input-range-style-overview;
+            cursor: pointer;
+            -webkit-appearance: none;
+        }
+        ::-moz-range-track {
+            cursor: pointer;
+            visibility: hidden;
+        }
+        ::-ms-track {
+            cursor: pointer;
+            visibility: hidden;
+        }
+        input[type="range"]::-ms-fill-upper {
+            background-color: transparent;
+        }
+        input[type="range"]::-ms-fill-lower {
+            background-color: transparent;
+        }
+        input::-moz-range-thumb {
+            @include input-range-style-overview;
+            cursor: pointer;
+            border: 0;
+        }
+        input::-ms-thumb {
+            @include input-range-style-overview;
+            cursor: pointer;
+            border: 0;
+        }
+        .ie-pollyfill {
+            @include input-range-poly-fill($thumb-img, $thumb-width, $thumb-height, $xOffset, $yOffset);
+        }
+        .desc {
+            color: #474747;
+            font-size: 11px;
+            font-weight: bold;
+            margin-top: 10px;
+            text-align: center;
+        }
+    }
+    .flst.disabled {
+        opacity: .5;
+    }
+}
+
+@mixin tutorial-up {
+    content: url("/images/tutorials/up.png");
+    @include translate(0, -46px);
+}
+
+@mixin tutorial-right {
+    content: url("/images/tutorials/right.png");
+    float: right;
+    @include translate(154px, 0);
+}
+
+@mixin tutorial-left {
+    content: url("/images/tutorials/left.png");
+    @include translate(-44px, 0);
+}
+
+@mixin fixed-header {
+    background: #fff;
+    border-bottom: 2px solid $color-header;
+    color: #353535;
+    font-family: "Proxima Nova Alt Semibold";
+    margin-bottom: 8px;
+    max-width: 100%;
+    padding-bottom: 3px;
+    text-align: left;
+    width: 960px;
+    z-index: 10;
+    h1, .pseudo-h1 {
+        font-size: 21px;
+        font-weight: normal;
+        margin: 0;
+    }
+}
+
+@mixin fixed-header-no-touch {
+    padding: $header-height + $header-margin-bottom - 18px 0 6px;
+    position: fixed;
+    top: 0;
+}
+
+@mixin hovers-links($top, $left) {
+    font-size: 0;
+    height: 0;
+    left: $left;
+    position: relative;
+    text-align: right;
+    top: $top;
+    white-space: nowrap;
+    @include transition(all, 0.25s, ease-in-out);
+    @include translate(0, -49px);
+    a,
+    button {
+        background: transparent;
+        border: 1px solid #dadada;
+        color: $color-accent-1;
+        display: inline-block;
+        font-size: 11px;
+        text-decoration: none;
+        height: 49px;
+        min-width: 105px;
+        overflow: hidden;
+        padding: 8px 5px 0;
+        text-align: center;
+        vertical-align: top;
+    }
+    a:hover,
+    button:hover {
+        text-decoration: underline;
+    }
+    .extracted {
+        color: rgba(0, 0, 0, 0.5);
+        cursor: default;
+        pointer-events: none;
+    }
+    .article.extracted:after {
+        content: "";
+    }
+    .extracted:hover {
+        text-decoration: none;
+    }
+    a:before,
+    button:before {
+        display: block;
+    }
+    .subscription:before {
+        content: url("/images/experts/follow.png");
+        margin-top: -4px;
+    }
+    .subscription.subscribed:before {
+        content: url("/images/experts/unfollow.png");
+    }
+    .stock:before {
+        content: url("/images/stock_icon.gif");
+    }
+    .extracted:before {
+        display: block;
+        opacity: .5;
+    }
+    .profile:before {
+        content: url("/images/analyst_profile_icon_25.gif");
+    }
+    .article:before {
+        content: url("/images/article_icon.gif");
+    }
+    a:after,
+    button:after {
+        content: ">";
+    }
+    a,
+    button {
+        border-right: 0;
+    }
+}
+
+@mixin subscription-button($top) {
+    float: right;
+    height: 0;
+    button {
+        background: #f9f9f9;
+        border: 1px solid $color-accent-3;
+        border-radius: 2px;
+        color: $color-accent-3;
+        font-size: 16px;
+        font-weight: bold;
+        line-height: 32px;
+        padding: 0 20px 0 13px;
+    }
+    button:before {
+        content: url("/images/subscription/button-subscription-icon.png");
+        margin-right: 11px;
+        position: relative;
+        top: 3px;
+    }
+    button:after {
+        @include transition(all, 0, ease-in-out);
+        @include translate(39px, -44px);
+        content: url("/images/lang/" + $lang + "/subscription/button-subscription-icon-hover-tooltip.png");
+        display: block;
+        opacity: 0;
+        position: absolute;
+    }
+    button.subscribed {
+        background: $color-accent-2;
+        border-color: #34900b;
+    }
+    button.subscribed:before {
+        content: url("/images/button-subscription-icon-subscribed.png");
+    }
+    a {
+        font-size: 12px;
+    }
+}
+
+@mixin subscription-button-hover {
+    button:hover {
+        background: #e7e7e7;
+    }
+    button:not(.subscribed):hover:after {
+        opacity: 1;
+    }
+}
+
+@mixin button($width, $height) {
+    @include box-shadow(1px, 1px, 3px, #000);
+    @include linear-gradient(#93276a, #8c3367);
+    &:hover {
+        @include button-hover;
+    }
+    border: 0;
+    border-radius: 4px;
+    color: #fff;
+    display: inline-block;
+    font-family: "Proxima Nova Bold";
+    font-size: 22px;
+    font-weight: bold;
+    line-height: $height - 2px;
+    margin: 0;
+    padding: 2px 0 0 0;
+    text-shadow: 0px 1px 2px #333;
+    text-transform: uppercase;
+    width: $width;
+}
+
+@mixin subscription-popup {
+    $width: 337px;
+    bottom: 47px;
+    position: fixed;
+    right: -$width - 400px;
+    z-index: 10;
+    .popup {
+        @include transition(all, 0.25s, ease-in-out);
+        @include translate(0, 0);
+        background: #f9f9f9;
+        border: 1px solid #dadada;
+        width: $width;
+    }
+    .close {
+        @include rotate(-45deg);
+        background: none;
+        border: 0;
+        color: #a0a09c;
+        float: right;
+        font-size: 25px;
+        padding: 0;
+        position: relative;
+        right: 6px;
+    }
+    h1, h2, .pseudo-h1 {
+        background: #fff;
+        border-bottom: 1px solid #e4e4e4;
+        color: #3b3b3b;
+        font-size: 13px;
+        font-weight: normal;
+        line-height: 34px;
+        margin: 0;
+        padding: 0 9px;
+    }
+    .subscription {
+        float: right;
+        button {
+            background: url("/images/follow.png");
+            border: 0;
+            color: #fff;
+            font-family: "Proxima Nova Bold";
+            font-size: 16px;
+            line-height: 38px;
+            margin: 6px 9px;
+            padding: 0 0 0 40px !important;
+            text-align: left;
+            width: 103px;
+        }
+        button.expert-button {
+            background-position: 0 -38px;
+        }
+        button.subscribed {
+            background-position: 0 -76px;
+            padding: 0 0 0 27px !important;
+        }
+    }
+    .info {
+        font-size: 12px;
+        font-weight: bold;
+        height: 46px;
+        padding: 6px 8px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 210px;
+        img {
+            float: left;
+            margin-right: 6px;
+            max-height: 35px;
+            max-width: 35px;
+        }
+        .stars {
+            margin-top: 5px;
+            .tr-small-stars {
+                @include scale(0.8);
+                left: -13px;
+                position: relative;
+                top: -3px;
+            }
+        }
+    }
+    .do-not-show {
+        border-top: 1px solid #e6e6e6;
+        color: #858585;
+        font-size: 10px;
+        line-height: 18px;
+        padding: 0 8px;
+        input {
+            vertical-align: middle;
+        }
+    }
+    .ticker {
+        text-transform: uppercase;
+    }
+}
+
+@mixin subscription-popup-no-touch {
+    .popup.on-scroll {
+        @include translate(-$width - 17px, 0);
+    }
+    .subscription {
+        button:not(.subscribed):hover {
+            background-position: 103px 0;
+        }
+        button.expert:not(.subscribed):hover {
+            background-position: 103px -38px;
+        }
+        button.subscribed:hover {
+            background-position: 103px -76px;
+        }
+    }
+}
+
+@mixin price($price-font-size, $cent-font-size, $duration-font-size, $info-font-size) {
+    .price {
+        font-size: $price-font-size;
+    }
+    .point {
+        display: none;
+    }
+    .cent {
+        font-size: $cent-font-size;
+        vertical-align: top;
+    }
+    .duration {
+        font-size: $duration-font-size;
+    }
+    .info {
+        font-size: $info-font-size;
+        vertical-align: super;
+    }
+}
+
+@mixin button-hover {
+    @include linear-gradient(#93276a, #b42278);
+}
+
+@mixin transaction-bubble {
+    border-radius: 4px;
+    color: #fbfbfb;
+    padding: 9px 0 3px;
+    text-align: center;
+    width: 134px;
+    position: relative;
+    .transaction-type {
+        font-size: 18px;
+        margin-bottom: 2px;
+    }
+    .transaction-amount {
+        font-size: 12px;
+    }
+    &:after {
+        bottom: -11px;
+        position: absolute;
+        right: -15px;
+    }
+    &.S {
+        background-color: rgb(144, 64, 143);
+        &:after {
+            content: url("/images/transactions/transaction_icon_S.png");
+        }
+    }
+    &.OB {
+        background-color: rgb(72, 186, 204);
+        &:after {
+            content: url("/images/transactions/transaction_icon_OB.png");
+        }
+    }
+    &.NB {
+        background-color: rgb(162, 162, 162);
+        &:after {
+            content: url("/images/transactions/transaction_icon_NB.png");
+        }
+    }
+    &.B {
+        background-color: #17929a;
+        &:after {
+            content: url("/images/transactions/transaction_icon_B.png");
+        }
+    }
+    &.AB {
+        background-color: #545454;
+        &:after {
+            content: url("/images/transactions/transaction_icon_AB.png");
+        }
+    }
+    &.AS {
+        background-color: #545454;
+        &:after {
+            content: url("/images/transactions/transaction_icon_AS.png");
+        }
+    }
+    &.NB {
+        background-color: #9f9f9f;
+        &:after {
+            content: url("/images/transactions/transaction_icon_NB.png");
+        }
+    }
+    &.NS {
+        background-color: #c0c0c0;
+        &:after {
+            content: url("/images/transactions/transaction_icon_NS.png");
+        }
+    }
+    &.OE {
+        background-color: #dcdcdc;
+        &:after {
+            content: url("/images/transactions/transaction_icon_OE.png");
+        }
+    }
+    &.OS {
+        background-color: #a666a5;
+        &:after {
+            content: url("/images/transactions/transaction_icon_OS.png");
+        }
+    }
+}
+
+@mixin button-as-link {
+    background: none;
+    border: 0;
+    color: $color-accent-1;
+    display: inline;
+    margin: 0;
+    padding: 0;
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+@mixin button-as-link-hover {
+    text-decoration: underline;
+}
+
+@mixin range-amount {
+    background: url("/images/insider/range-bg.png") 0 no-repeat;
+    height: 15px;
+    width: 403px;
+    .range-inner-wrapper {
+        height: 0;
+        position: absolute;
+        width: 403px;
+    }
+    .range-inner {
+        background: url("/images/insider/range-full-bg.png") right no-repeat;
+        color: #007dd4;
+        height: 15px;
+        float: right;
+        font-size: 12px;
+        font-weight: bold;
+        span {
+            position: relative;
+            top: -16px;
+        }
+    }
+    [type=range] {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        box-sizing: content-box;
+        background: none;
+        display: block;
+        margin: auto;
+        position: relative;
+        width: 100%;
+        &:focus {
+            outline: 0;
+        }
+        &::-webkit-slider-thumb {
+            @include input-range-style-overview;
+            -webkit-appearance: none;
+            cursor: pointer;
+        }
+    }
+    ::-moz-range-track {
+        cursor: pointer;
+        visibility: hidden;
+    }
+    ::-ms-track {
+        cursor: pointer;
+        visibility: hidden;
+    }
+    input[type="range"]::-ms-fill-upper {
+        background-color: transparent;
+    }
+    input[type="range"]::-ms-fill-lower {
+        background-color: transparent;
+    }
+    input::-moz-range-thumb {
+        @include input-range-style-overview;
+        border: 0;
+        cursor: pointer;
+    }
+    input::-ms-thumb {
+        @include input-range-style-overview;
+        border: 0;
+        cursor: pointer;
+        position: relative;
+        top: -30px;
+    }
+    .ie-pollyfill {
+        @include input-range-poly-fill("/images/input-range.png", 13px, 23px, 0, 0);
+    }
+}
+
+@mixin checkbox {
+    input[type="checkbox"] {
+        display: none;
+    }
+    input[type="checkbox"] + label .checkbox {
+        display: inline-block;
+        width: 19px;
+        height: 17px;
+        margin: -1px 2px 0 0;
+        vertical-align: -3px;
+        background: url(/images/ratings/checkbox.png) left top no-repeat;
+        cursor: pointer;
+    }
+    input[type="checkbox"]:checked + label .checkbox {
+        background: url(/images/ratings/checkbox-checked.png) left top no-repeat;
+    }
+}
+
+@mixin option-with-checkbox($unchecked, $checked) {
+    .option {
+        @include checkbox;
+        .checkbox {}
+        .label {
+            color: unchecked;
+            display: block;
+            &.checked {
+                color: $checked;
+            }
+            img {
+                vertical-align: -1px;
+            }
+        }
+    }
+}
+
+@mixin radio {
+    input[type="radio"] {
+        display: none;
+    }
+    input[type="radio"] + label .radio {
+        background: url("/images/transactions/radio.png") no-repeat;
+        cursor: pointer;
+        display: inline-block;
+        height: 20px;
+        margin: 0 4px 0 0;
+        width: 20px;
+        vertical-align: middle;
+    }
+    input[type="radio"]:checked + label .radio {
+        background: url("/images/transactions/radio-checked.png") left top no-repeat;
+    }
+}
+
+@mixin arrow-cell($color) {
+    background-color: $color;
+    .arrow {
+        border-color: transparent $color transparent transparent;
+    }
+}

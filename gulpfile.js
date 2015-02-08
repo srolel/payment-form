@@ -6,6 +6,7 @@ var plumber = require('gulp-plumber');
 var livereload = require('gulp-livereload');
 var spritesmith = require('gulp.spritesmith');
 var karma = require('karma').server;
+var merge = require('merge-stream');
 
 var appConfig = {
 	app: './app/',
@@ -26,15 +27,13 @@ function bower(path) {
 	return appConfig.bower + (path || '');
 }
 
-var onError = function (err) {
+var onError = function (e) {
 	gutil.beep();
-	console.log(err);
+	console.log(e.toString());
+	this.emit('end');
 }
 
-gulp.task('sass', function () {
-	//append stuff to each scss before compiling. 
-	//$path-to-images is used by all images/fonts.
-	// var pathToImages = '$path-to-images: "https://trstorage1.blob.core.windows.net/dashboard-dist-images";',
+function sassTask() {
 	return gulp.src(app('styles/*.scss'))
 		.pipe(plumber({
 			errorHandler: onError
@@ -42,7 +41,10 @@ gulp.task('sass', function () {
 		.pipe(sass())
 		.pipe(gulp.dest(app('styles')))
 		.pipe(livereload());
-})
+}
+
+gulp.task('sass', sassTask);
+gulp.task('sass-sprite', ['make-sprite'], sassTask);
 
 gulp.task('watch', function () {
 	livereload.listen();
@@ -61,35 +63,35 @@ gulp.task('serve-app', function () {
 		}))
 });
 
-gulp.task('sprite', function () {
+gulp.task('make-sprite', function () {
 
-	gulp.src(app('images/**/*.png'))
+	var streams = [];
+
+	streams.push(gulp.src(app('images/flags/*.png'))
 		.pipe(spritesmith({
 			imgName: 'flags.png',
 			imgPath: '/sprites/flags.png',
 			cssName: 'flags.scss',
+			cssSpritesheetName: 'flags',
 			algorithm: 'left-right',
 		}))
-		.pipe(gulp.dest(app('sprites')))
+		.pipe(gulp.dest(app('sprites'))))
 
-	gulp.src(app('images/cards/*.png'))
+
+	streams.push(gulp.src(app('images/cards/*.png'))
 		.pipe(spritesmith({
 			imgName: 'cards.png',
 			imgPath: '/sprites/cards.png',
 			cssName: 'cards.scss',
-			algorithm: 'left-right',
+			cssSpritesheetName: 'cards',
+			// algorithm: 'left-right',
 		}))
-		.pipe(gulp.dest(app('sprites')))
+		.pipe(gulp.dest(app('sprites'))))
+
+	return merge.apply(0, streams)
 })
 
-var testFiles = [
-	bower('angular/angular.js'),
-	bower('angular-mocks/angular-mocks.js'),
-	bower('angular-payment/payment-0.2.0.js'),
-	app('scripts/**/*.js'),
-	test('mock/**/*.js'),
-	test('spec/**/*.js')
-]
+gulp.task('sprite', ['sass-sprite']);
 
 gulp.task('test', function (done) {
 	karma.start({

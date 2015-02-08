@@ -1,47 +1,58 @@
 <div class="buynow-view">
-<div ng-click="toggleDropdown($event)">{{selectedCountry.name}}</div>
-<div ng-show="dropdownShown">
-	<input ng-click="$event.stopPropagation()" type="text" ng-model="countryFilter">
-	<ul class="country-list">
-		<li ng-repeat="country in countries track by country.code | filter:countryFilter:filterCountries" class="flag {{country.abbr}}" ng-class="{selected: isCountrySelected(country)}" ng-click="selectCountry(country)">{{country.name}}</li>
-	</ul>
-</div>
+    <form class="bluesnap-form" id="checkout-form" name="checkoutForm" tr-bluesnap-form name="checkoutForm" novalidate="" ng-submit="formCtrl.submit()">
+        <div country-dropdown class="header">
+            <span class="title">Payment Options For
+			<span ng-click="countryDropdownCtrl.toggleDropdown($event)" class="selected-country">{{selectedCountry.name}} <span class="triangle">&#x25BC;</span></span>
+            </span>
+            <div class="country-dropdown" ng-show="countryDropdownCtrl.isDropdownShown()">
+                <input ng-click="$event.stopPropagation()" type="text" ng-model="countryFilter">
+                <ul class="country-list">
+                    <li ng-repeat="country in countries track by country.code | filter:countryFilter:filterCountries" class="flag {{country.abbr}}" ng-class="{selected: isCountrySelected(country)}" ng-click="selectCountry(country)">{{country.name}}</li>
+                </ul>
+            </div>
+        </div>
+        <ul class="payment-options" payment-options>
+            <li ng-repeat="opt in paymentOpts">
+                <input type="radio" ng-checked="isPaymentSelected(opt)">
+                <label class="title" ng-click="selectPayment(opt)"><span class="radio"></span><span class="icon {{opt.id}}">{{opt.name}}</span>
+                </label>
+            </li>
+        </ul>
 
-	<form class="bluesnap-form" id="checkout-form" name="checkoutForm" tr-bluesnap-form name="checkoutForm" novalidate="" ng-submit="formCtrl.submit()">
+        <div class="input-fields">
+            <div class="form-input card">
+                <label>Card Number</label>
+                <tr-bluesnap-input ng-model="card" type-model="type" is-encrypted="true"></tr-bluesnap-input>
+                <div class="cards-icons" credit-cards>
+                    <div class="card-icon {{card}}" ng-repeat="card in cards" ng-class="{selected: isCardSelected(card)}"></div>
+                </div>
+            </div>
+            <div class="form-input expiry">
+                <label>Expiration Date</label>
+                <month-select ng-model="expiryMonth"></month-select>
+                <year-select ng-model="expiryYear"></year-select>
+                <tr-bluesnap-input type="hidden" ng-model="expiry"></tr-bluesnap-input>
+            </div>
+            <div class="form-input security">
+                <label>Security Code</label>
+                <tr-bluesnap-input ng-model="cvc" type-model="type" is-encrypted="true"></tr-bluesnap-input>
+                <span class="security-code-tooltip"><a>What is this?</a></span>
+            </div>
+            <div class="title">Personal Details</div>
+            <div class="form-input fullname">
+                <label>Full Name</label>
+                <input type="text" required name="fullName" ng-model="fullName">
+            </div>
+            <div class="form-input email">
+                <label>Email Address</label>
+                <input type="email" required name="email" ng-model="email">
+            </div>
+            <div class="form-input {{name}}" ng-repeat="(name, opts) in selectedCountry.sub">
+                <label>{{name | capitalize}}</label>
+                <select ng-model="state" ng-options="state.name for state in opts"></select>
+            </div>
+        </div>
+        <button type="submit">submit</button>
 
-	  		<tt>$valid = {{checkoutForm.$valid}}</tt><br>
-
-	  		<div class="cards-icons">
-	  			<div class="card-icon {{card}}" ng-repeat="card in cards" ng-class="{selected: isCardSelected(card)}"></div>
-	  		</div>
-			card type: {{type}}
-		<ul>
-			<li>
-				<h2>Card Number</h2>
-				number: {{card}}<br>
-				<tr-bluesnap-input ng-model="card" type-model="type" is-encrypted="true"></tr-form-input>
-			</li>
-			<li>
-				<h2>CVC</h2>
-				cvc: {{cvc}}<br>
-				<tr-bluesnap-input ng-model="cvc" type-model="type" is-encrypted="true"></tr-form-input>
-		    </li>
-			<li>
-				<h2>Expiry</h2>
-				expiry: {{expiry}}<br>
-				<tr-bluesnap-input ng-model="expiry"></tr-form-input>
-			</li>
-
-			<li>
-				<h2>Full Name</h2>
-				<input type="text" required class="form-control" name="fullName" tr-form-input ng-model="fullName">
-			</li>
-			<li>
-				<h2>Email Address</h2>
-				<input type="email" required class="form-control" name="email" tr-form-input ng-model="email">
-			</li>
-		</ul>
-
-		<button type="submit">submit</button>
-	</form>
+    </form>
 </div>

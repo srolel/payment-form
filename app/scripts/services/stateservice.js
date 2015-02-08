@@ -11,7 +11,7 @@ angular.module('paymentApp')
 	.service('StateService', function () {
 		return {
 			getCookie: function () {
-				return 'Israel';
+				return 'Canada';
 			}
 		}
 	});

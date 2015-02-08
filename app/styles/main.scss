@@ -1,46 +1,85 @@
-@import '../sprites/flags';
-@import '../sprites/cards';
+@import "normalize";
+@import "utilities";
+@import "../sprites/flags";
+@import "../sprites/cards";
+@import "components";
+
+@font-face {
+    font-family: 'Proxima Nova';
+    src: url("/fonts/mark_simonson_-_proxima_nova_alt_light-webfont.eot");
+    src: url("/fonts/mark_simonson_-_proxima_nova_alt_light-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/mark_simonson_-_proxima_nova_alt_light-webfont.woff") format("woff"), url("/fonts/mark_simonson_-_proxima_nova_alt_light-webfont.ttf") format("truetype"), url("/fonts/mark_simonson_-_proxima_nova_alt_light-webfont.svg#svgFontName") format("svg");
+}
+
+
+@font-face {
+    font-family: 'Proxima Nova Alt Semibold';
+    src: url("/fonts/mark_simonson_-_proxima_nova_alt_semibold-webfont.eot");
+    src: url("/fonts/mark_simonson_-_proxima_nova_alt_semibold-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/mark_simonson_-_proxima_nova_alt_semibold-webfont.woff") format("woff"), url("/fonts/mark_simonson_-_proxima_nova_alt_semibold-webfont.ttf") format("truetype"), url("/fonts/mark_simonson_-_proxima_nova_alt_semibold-webfont.svg#svgFontName") format("svg");
+}
+
+
+@font-face {
+    font-family: 'Proxima Nova Bold';
+    src: url("/fonts/mark_simonson_-_proxima_nova_alt_bold-webfont.eot");
+    src: url("/fonts/mark_simonson_-_proxima_nova_alt_bold-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/mark_simonson_-_proxima_nova_alt_bold-webfont.woff") format("woff"), url("/fonts/mark_simonson_-_proxima_nova_alt_bold-webfont.ttf") format("truetype"), url("/fonts/mark_simonson_-_proxima_nova_alt_bold-webfont.svg#svgFontName") format("svg");
+}
+
+
+@font-face {
+    font-family: 'Proxima Nova Regular';
+    src: url("/fonts/mark_simonson_-_proxima_nova_alt_regular-webfont.eot");
+    src: url("/fonts/mark_simonson_-_proxima_nova_alt_regular-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/mark_simonson_-_proxima_nova_alt_regular-webfont.woff") format("woff"), url("/fonts/mark_simonson_-_proxima_nova_alt_regular-webfont.svg#svgFontName") format("svg");
+}
+
+
+@font-face {
+    font-family: 'Proxima Nova Condensed Bold';
+    src: url("/fonts/mark_simonson_-_proxima_nova_alt_condensed_bold-webfont.eot");
+    src: url("/fonts/mark_simonson_-_proxima_nova_alt_condensed_bold-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/mark_simonson_-_proxima_nova_alt_condensed_bold-webfont.woff") format("woff"), url("/fonts/mark_simonson_-_proxima_nova_alt_condensed_bold-webfont.ttf") format("truetype"), url("/fonts/mark_simonson_-_proxima_nova_alt_condensed_bold-webfont.svg#svgFontName") format("svg");
+}
+
 
 @mixin sprite-width($sprite) {
-  width: nth($sprite, 5);
+    width: nth($sprite, 5);
 }
 
-@mixin sprite-height($sprite, $part:false) {
-  @if $part {
-      height: nth($sprite, 6)/2;    
-  } @else {
-      height: nth($sprite, 6);    
-  }
+@mixin sprite-height($sprite, $part: false) {
+    @if $part {
+        height: nth($sprite, 6) / 2;
+    }
+    @else {
+        height: nth($sprite, 6);
+    }
 }
 
-
-@mixin sprite-position($sprite, $part:false) {
-  $sprite-offset-x: nth($sprite, 3);
-  $sprite-offset-y: nth($sprite, 4);
-  @if $part == "bottom" {
-    $sprite-height: nth($sprite, 6);
-    $_sprite-offset-y: $sprite-offset-y - $sprite-height/2;
-    background-position: $sprite-offset-x  $_sprite-offset-y;   
-  } @else {
-    background-position: $sprite-offset-x  $sprite-offset-y;    
-  }
+@mixin sprite-position($sprite, $part: false) {
+    $sprite-offset-x: nth($sprite, 3);
+    $sprite-offset-y: nth($sprite, 4);
+    @if $part == "bottom" {
+        $sprite-height: nth($sprite, 6);
+        $_sprite-offset-y: $sprite-offset-y - $sprite-height / 2;
+        background-position: $sprite-offset-x $_sprite-offset-y;
+    }
+    @else {
+        background-position: $sprite-offset-x $sprite-offset-y;
+    }
 }
 
 @mixin sprite-image($sprite) {
-  $sprite-image: nth($sprite, 9);
-  background-image: url(#{$sprite-image});
+    $sprite-image: nth($sprite, 9);
+    background-image: url(#{$sprite-image});
 }
 
-@mixin sprite($sprite, $pseudo:false, $part:false) {
-  @if $pseudo {
-    content: $pseudo;
-    display: inline-block;
-  }
-  @include sprite-image($sprite);
-  @include sprite-position($sprite, $part);
-  @include sprite-width($sprite);
-  @include sprite-height($sprite, $part);
-  background-color: transparent;
+@mixin sprite($sprite, $pseudo: false, $part: false) {
+    @if $pseudo {
+        content: $pseudo;
+        display: inline-block;
+    }
+    @include sprite-image($sprite);
+    @include sprite-position($sprite, $part);
+    @include sprite-width($sprite);
+    @include sprite-height($sprite, $part);
+    background-color: transparent;
 }
 
 /*
@@ -49,74 +88,208 @@ The `sprites` mixin generates identical output to the CSS template
 
 @include sprites($spritesheet-sprites);
 */
-@mixin sprites($sprites, $pseudo:false, $parts:false) {
-  @each $sprite in $sprites {
-    $sprite-name: nth($sprite, 10);
-    .#{$sprite-name} {
-      @include sprite($sprite, $pseudo, "top");
-      @if $parts {
-        &.selected {
-          @include sprite-position($sprite, "bottom")
+@mixin sprites($sprites, $pseudo: false, $parts: false) {
+    @each $sprite in $sprites {
+        $sprite-name: nth($sprite, 10);
+        .#{$sprite-name} {
+            @include sprite($sprite, $pseudo, "top");
+            @if $parts {
+                &.selected {
+                    @include sprite-position($sprite, "bottom");
+                }
+            }
         }
-      }
     }
-  }
 }
 
 @mixin sprites-before($sprites) {
-  @each $sprite in $sprites {
-    $sprite-name: nth($sprite, 10);
-    .#{$sprite-name} {
-      &:before {
-        @include sprite($sprite, "");
-      }
+    @each $sprite in $sprites {
+        $sprite-name: nth($sprite, 10);
+        .#{$sprite-name} {
+            &:before {
+                @include sprite($sprite, "");
+            }
+        }
     }
-  }
 }
+
+@mixin sprites-after($sprites) {
+    @each $sprite in $sprites {
+        $sprite-name: nth($sprite, 10);
+        .#{$sprite-name} {
+            &:after {
+                @include sprite($sprite, "");
+            }
+        }
+    }
+}
+
+$tr-blue: #007dd4;
+$tr-black: #353535;
+$tr-red: #e51414;
+$tr-grey: #c9c9c9;
 
 .buynow-view {
-  .country-list {
-    height: 300px;
-    width: 400px;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    @include sprites-before($flags-sprites);
-
-    position: absolute;
-    background: #fff;
-    padding: 0;
-
-    .flag:before {
-      margin-right: 4px;
-    }
-
-    .selected {
-      background-color: gainsboro;
-    }
-
-
-  }
-
-  .cards-icons {
-      @include sprites($cards-sprites, false, true);
-
-      .card-icon {
-        display: inline-block;
-      }
-  }
-  form.bluesnap-form {
-    ul {
-      list-style-type: none;
-
-      li {
-        margin-bottom: 10px;
-        &:nth-last-child(n+3) {
-          display: inline-block;
-          margin-right:40px;
+    input, select {
+        height: 24px;
+        padding: 1px 12px;
+        font-size: 14px;
+        line-height: 1.42857143;
+        color: #555;
+        background-color: #fff;
+        background-image: none;
+        border: 1px solid #ccc;
+        border-radius: 1px;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+        -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+        -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+        transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+        &:focus {
+            border-color: #66afe9;
+            outline: 0;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
         }
-        
-      }
     }
-  }
+    select {
+        padding: 1px 6px;
+        height: 28px;
+    }
+    .header {
+        margin-bottom: 22px;
+        .title {
+            font-size: 21px;
+            font-family: Proxima Nova Regular;
+            .selected-country {
+                color: $tr-blue;
+                .triangle {
+                    font-size: 13px;
+                    vertical-align: 1px;
+                }
+            }
+        }
+        .country-dropdown {
+            position: absolute;
+            background: #fff;
+            border: 2px solid $tr-grey;
+            z-index: 999;
+            .country-list {
+                height: 300px;
+                width: 400px;
+                overflow-x: hidden;
+                overflow-y: scroll;
+                padding: 0;
+                @include sprites-before($flags-sprites);
+                .flag:before {
+                    margin-right: 4px;
+                }
+                .selected {
+                    background-color: gainsboro;
+                }
+            }
+        }
+    }
+    .cards-icons {
+        display: inline-block;
+        vertical-align: -8px;
+        @include sprites($cards-sprites, false, true);
+        .card-icon {
+            display: inline-block;
+            margin-right: 4px;
+        }
+    }
+    form.bluesnap-form {
+        border-bottom: 2px solid $tr-black;
+        border-top: 2px solid $tr-black;
+        padding: 20px;
+        ul.payment-options {
+            list-style-type: none;
+            padding: 0 0 7px;
+            margin: 0;
+            border-bottom: 1px solid $tr-grey;
+            li {
+                margin-right: 15px;
+                display: inline-block;
+                @include radio;
+                $payment-sprites: $credit-card, $paypal;
+                @include sprites-before($payment-sprites);
+                .icon.credit-card {
+                    vertical-align: -3px;
+                    &:before {
+                        vertical-align: -4px;
+                        margin-right: 6px;
+                    }
+                }
+                .icon.paypal {
+                    vertical-align: -2px;
+                    &:before {
+                        vertical-align: -6px;
+                        margin-right: 6px;
+                    }
+                }
+                .title {
+                    font-family: Proxima Nova Regular;
+                    font-size: 13px;
+                    color: #878787;
+                    font-weight: normal;
+                }
+            }
+        }
+        .input-fields {
+            .form-input {
+                margin: 15px 0;
+                .security-code-tooltip {
+                    &:before {
+                        @include sprite($security-numbers, "");
+                        vertical-align: -5px;
+                        margin-right: 6px;
+                    }
+                    a {
+                        color: $tr-blue;
+                        font-size: 11px;
+                        &:hover {
+                            text-decoration: none;
+                        }
+                    }
+                }
+                input {
+                    width: 245px;
+                }
+                select {
+                    width: 271px;
+                }
+                &.card input {
+                    width: 205px;
+                }
+                &.expiry select {
+                    width: 80px;
+                    margin-right: 4px;
+                }
+                &.security input {
+                    width: 70px;
+                }
+            }
+            label {
+                width: 100px;
+                font-weight: bold;
+                font-size: 12px;
+                display: inline-block;
+                &:after {
+                    margin-left: 1px;
+                    vertical-align: -3px;
+                    content: '*';
+                    font-size: 18px;
+                    color: $tr-red;
+                }
+            }
+            .tr-bluesnap-input {
+                display: inline-block;
+            }
+            > .title {
+                font-family: Proxima Nova Regular;
+                font-size: 21px;
+            }
+        }
+    }
 }
-

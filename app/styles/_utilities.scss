@@ -1,0 +1,324 @@
+$view-big:785px;
+$view-home-max-width: 1920px;
+
+/* layout */
+
+$header-height:97px;
+ $header-controls-height:36px;
+ $header-font-size:15px;
+ $width: 785px;
+ $view-width:960px;
+ $header-margin-bottom:28px;
+
+/* text */
+
+$font-color:#4d4d4b;
+ $font-family:arial;
+ $font-family-thin:arial;
+ $font-family-bold:arial;
+ $font-family-light:arial;
+ $font-family-semi-bold:arial;
+ $font-family-light-italic:arial;
+ $font-size:14px;
+ $outline-color:#cacacb;
+ $title-color:#4d4d4b;
+
+/* colors */
+
+$rating-buy-color:#199ca5;
+$rating-moderate-buy-color:#35d0e5;
+$rating-hold-color:#818181;
+$rating-moderate-sell-color:#916bea;
+$rating-sell-color:#91208c;
+$color-header:#353535;
+$color-feature:#f9f9f9;
+$color-top:#f89d03;
+$tr-active-color:#007dd4;
+$tr-inactive-color:#8d8d8d;
+$color-accent-1:#007dd4;
+
+/* blue links */
+
+$color-accent-2:#f9f9f9;
+
+/* grey sections */
+
+$color-accent-3:#353535;
+
+/* black borders */
+
+/* mixins */
+
+@mixin criterias($header-color) {
+    text-align: left;
+    .feature {
+        padding: 13px 5px;
+    }
+    .criteria-hidden {
+        display: none;
+    }
+    .criteria-group {
+        display: inline-block;
+        padding-right: 43px;
+        vertical-align: top;
+        .criteria-section {
+            color: $header-color;
+            font-size: 14px;
+            font-weight: bold;
+            margin: 0 0 7px;
+        }
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            width: 160px;
+        }
+        ul.double {
+            width: 480px;
+        }
+        li {
+            display: inline-block;
+            margin: 0 0 6px;
+            padding: 0 5px 0 0;
+            vertical-align: top;
+            width: 160px;
+        }
+        label {
+            padding: 4px;
+        }
+        .is-all label {
+            background: #f9f9f9;
+            border: 1px solid #dfdfdf;
+        }
+        input {
+            display: none;
+        }
+        .label {
+            color: #8d8d8d;
+            font-size: 12px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -khtml-user-select: none;
+            -ms-user-select: none;
+        }
+        :checked + .label {
+            color: #36768e;
+        }
+        .label:before {
+            margin-right: 2px;
+            vertical-align: -20%;
+        }
+        [type=radio] + .label:before {
+            content: url("#{$path-to-images}/images/transactions/radio.png");
+        }
+        [type=radio]:checked + .label:before {
+            content: url("#{$path-to-images}/images/transactions/radio-checked.png");
+        }
+        [type=checkbox] + .label:before {
+            content: url("#{$path-to-images}/images/ratings/checkbox.png")!important;
+        }
+        [type=checkbox]:checked + .label:before {
+            content: url("#{$path-to-images}/images/ratings/checkbox-checked.png")!important;
+        }
+        li.restricted {
+            .label:after {
+                background: #ec8408;
+                border-radius: 2px;
+                color: #fff;
+                content: "Premium";
+                display: inline-block;
+                font-size: 13px;
+                line-height: 15px;
+                margin-left: 6px;
+                padding: 0 8px;
+            }
+        }
+    }
+    .criteria-group:not(:first-child):before {
+        @include translate(-69px, 18px);
+        content: url("#{$path-to-images}/images/stocks/slash.gif");
+        display: inline-block;
+        height: 0;
+        position: absolute;
+        vertical-align: top;
+        width: 0;
+    }
+}
+@mixin linear-gradient($fromColor, $toColor) {
+    background-color: $toColor;
+    /* Fallback Color */
+    background-image: -webkit-gradient(linear, left top, left bottom, from($fromColor), to($toColor));
+    /* Saf4+, Chrome */
+    background-image: -webkit-linear-gradient(top, $fromColor, $toColor);
+    /* Chrome 10+, Saf5.1+, iOS 5+ */
+    background-image: -moz-linear-gradient(top, $fromColor, $toColor);
+    /* FF3.6 */
+    background-image: -ms-linear-gradient(top, $fromColor, $toColor);
+    /* IE10 */
+    background-image: -o-linear-gradient(top, $fromColor, $toColor);
+    /* Opera 11.10+ */
+    background-image: linear-gradient(top, $fromColor, $toColor);
+}
+@mixin calc($property, $expression) {
+    #{$property}:-webkit-calc(#{$expression});
+    #{$property}:-moz-calc(#{$expression});
+    #{$property}:calc(#{$expression});
+    /**/
+}
+@mixin transition($transition-property, $transition-time, $method) {
+    -moz-transition: $transition-property $transition-time $method;
+    -ms-transition: $transition-property $transition-time $method;
+    -o-transition: $transition-property $transition-time $method;
+    transition: $transition-property $transition-time $method;
+}
+@mixin rotate($degrees) {
+    -webkit-transform: rotate($degrees);
+    -moz-transform: rotate($degrees);
+    -ms-transform: rotate($degrees);
+    -o-transform: rotate($degrees);
+    transform: rotate($degrees);
+}
+@mixin scale($factor) {
+    -webkit-transform: scale($factor);
+    -moz-transform: scale($factor);
+    -ms-transform: scale($factor);
+    -o-transform: scale($factor);
+}
+@mixin translate($trans-x, $trans-y) {
+    -moz-transform: translate($trans-x, $trans-y);
+    -webkit-transform: translate($trans-x, $trans-y);
+    -o-transform: translate($trans-x, $trans-y);
+    -ms-transform: translate($trans-x, $trans-y);
+    transform: translate($trans-x, $trans-y);
+}
+@mixin translateX($trans-x) {
+    -moz-transform: translateX($trans-x);
+    -webkit-transform: translateX($trans-x);
+    -o-transform: translateX($trans-x);
+    -ms-transform: translateX($trans-x);
+    transform: translateX($trans-x);
+}
+@mixin translateY($trans-y) {
+    -moz-transform: translateY($trans-y);
+    -webkit-transform: translateY($trans-y);
+    -o-transform: translateY($trans-y);
+    -ms-transform: translateY($trans-y);
+    transform: translateY($trans-y);
+}
+@mixin translateZ($trans-z) {
+    -moz-transform: translateZ($trans-z);
+    -webkit-transform: translateZ($trans-z);
+    -o-transform: translateZ($trans-z);
+    -ms-transform: translateZ($trans-z);
+    transform: translateZ($trans-z);
+}
+
+@mixin userSelect() {
+    -moz-user-select: -moz-none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+@mixin placeholder($color, $font-size, $font-style) {
+    ::-webkit-input-placeholder {
+        color: $color;
+        font-size: $font-size;
+        font-style: $font-style;
+    }
+    :-moz-placeholder {
+        color: $color;
+        font-size: $font-size;
+        font-style: $font-style;
+    }
+    ::-moz-placeholder {
+        color: $color;
+        font-size: $font-size;
+        font-style: $font-style;
+    }
+    :-ms-input-placeholder {
+        color: $color;
+        font-size: $font-size;
+        font-style: $font-style;
+    }
+}
+@mixin input-range-style {
+    background: url("#{$path-to-images}/images/input-range.png");
+    height: 23px;
+    width: 13px;
+}
+@mixin input-range-style-overview {
+    background: url("#{$path-to-images}/images/d3overview/thumb.png");
+    height: 15px;
+    width: 9px;
+}
+@mixin transitionDelay($delay) {
+    -webkit-transition-delay: $delay;
+    -moz-transition-delay: $delay;
+    -o-transition-delay: $delay;
+    -ms-transition-delay: $delay;
+    transition-delay: $delay;
+}
+@mixin box-shadow($top, $left, $blur, $color, $inset:false) {
+    @if $inset {
+        -webkit-box-shadow: inset $top $left $blur $color;
+        -moz-box-shadow: inset $top $left $blur $color;
+        box-shadow: inset $top $left $blur $color;
+    }
+    @else {
+        -webkit-box-shadow: $top $left $blur $color;
+        -moz-box-shadow: $top $left $blur $color;
+        box-shadow: $top $left $blur $color;
+    }
+}
+
+@mixin linear-gradient($fromColor, $toColor) {
+  background-color: $toColor; /* Fallback Color */
+  background-image: -webkit-gradient(linear, left top, left bottom, from($fromColor), to($toColor)); /* Saf4+, Chrome */
+  background-image: -webkit-linear-gradient(top, $fromColor, $toColor); /* Chrome 10+, Saf5.1+, iOS 5+ */
+  background-image:    -moz-linear-gradient(top, $fromColor, $toColor); /* FF3.6 */
+  background-image:     -ms-linear-gradient(top, $fromColor, $toColor); /* IE10 */
+  background-image:      -o-linear-gradient(top, $fromColor, $toColor); /* Opera 11.10+ */
+  background-image:         linear-gradient(top, $fromColor, $toColor);
+}
+
+@mixin animation-name($animationName) {
+    -webkit-animation-name: $animationName;
+    -ms-animation-name: $animationName;
+    -moz-animation-name: $animationName;
+    -o-animation-name: $animationName;
+    animation-name: $animationName;
+}
+
+@mixin animation-timing-function($val) {
+    -webkit-animation-timing-function: $val;
+    -ms-animation-timing-function: $val;
+    -moz-animation-timing-function: $val;
+    -o-animation-timing-function: $val;
+    animation-timing-function: $val;
+}
+
+@mixin animation-iteration-count($val) {
+    -webkit-animation-iteration-count: $val;
+    -ms-animation-iteration-count: $val;
+    -moz-animation-iteration-count: $val;
+    -o-animation-iteration-count: $val;
+    animation-iteration-count: $val;
+}
+
+@mixin animation-duration($val) {
+    -webkit-animation-duration: $val;
+    -ms-animation-duration: $val;
+    -moz-animation-duration: $val;
+    -o-animation-duration: $val;
+    animation-duration: $val;
+}
+
+@mixin animation-play-state($val) {
+    -webkit-animation-play-state: $val;
+    -ms-animation-play-state: $val;
+    -moz-animation-play-state: $val;
+    -o-animation-play-state: $val;
+    animation-play-state: $val;
+}

@@ -8,129 +8,24 @@
  * Service in the paymentApp.
  */
 angular.module('paymentApp')
-	.service('BuynowService', function (Countries, errorService) {
+	.service('BuynowService', function (Countries, errorService, Selector) {
 
 		var cards = ['visa', 'mastercard', 'amex', 'discover', 'jcb'];
 
-		this.getCards = function getCards() {
-			return cards;
-		};
+		this.cardSelector = new Selector(cards);
 
 		var paymentOpts = [{
 			name: 'Credit & Debit Cards',
 			id: 'credit-card',
-			isSelected: true
 		}, {
 			name: 'PayPal',
 			id: 'paypal',
-			isSelected: false
 		}];
 
-		this.getPaymentOpts = function () {
-			return paymentOpts;
-		};
-
-		this.isPaymentSelected = function isPaymentSelected(opt) {
-			return opt.isSelected;
-		};
-		this.selectPayment = function selectPayment(opt) {
-			paymentOpts.forEach(function (o) {
-				o.isSelected = false;
-			})
-			opt.isSelected = true;
-		};
+		this.paymentSelector = new Selector(paymentOpts, 0);
 
 		//Countries Value service is an array of country objects - {name, code, abbr}
-		var codes = Countries;
-
-		//country - what to search by, field - what attribute of the lookup ersult to return, 
-		//search - boolean to indicate search, searchBy - attribute to search by (name, code etc.)
-
-		var getCompFn = function (matcherFn) {
-			matcherFn = typeof matcherFn === 'function' ? matcherFn : function (a, b) {
-				return a === b;
-			};
-			return function compFn(a, b) {
-				//if a is object, array or function, call compFn on its members and return if one of the calls returned true
-				if (typeof a === 'object' || typeof a === 'function') {
-					return !!Object.keys(a).map(function (key) {
-						return compFn(a[key], b);
-					}).filter(Boolean).length;
-				}
-				//check for case-insensitive string match
-				return matcherFn(a, b);
-
-			};
-		}
-
-		var isArrayOrString = function isArrayOrString(x) {
-			return angular.isArray(x) || typeof x === 'string';
-		}
-
-		var getCountry = this.getCountry = function getCountry(country, field, search, searchBy) {
-
-			if (!country) return null;
-
-			country = country.toString();
-
-			var isMatch = search ? function (a, b) {
-					return a.search(new RegExp(b)) > -1;
-				} : function (a, b) {
-					return a === b;
-				}
-				//Strict match vs partial match
-			var matcherFn = function (a, b) {
-				if (typeof a !== 'string' || typeof b !== 'string') return;
-				a = a.toLowerCase(), b = b.toLowerCase();
-				return isMatch(a, b);
-			}
-
-			var compFn = getCompFn(matcherFn);
-
-			//for convenience
-			searchBy = isArrayOrString(searchBy) ? searchBy : true;
-
-			//filter countries
-			var result = codes.filter(function (c) {
-
-				//properties to search by
-				if (Object.keys(c).map(function (key) {
-						if ((searchBy === true && key !== 'sub') || (isArrayOrString(searchBy) && searchBy.indexOf(key) > -1)) {
-							return compFn(c[key], country);
-						}
-					}).filter(Boolean).length) {
-					return true;
-				}
-			});
-
-			//map to relevant requested properties
-			if (field !== 'obj') {
-				var _field = {
-					name: 'name',
-					id: 'code',
-					abbr: 'abbr',
-					0: 'name',
-					1: 'abbr',
-					2: 'code',
-					code: 'code'
-				}[field || 1];
-
-				result = result.map(function (res) {
-					return res[_field];
-				})
-			}
-
-			return search ? result : result[0] || null;
-		}
-
-		//either get all countries (when search is falsey) or search for countries
-		this.getCountries = function (search, searchBy, field) {
-			if (!search) return codes;
-			field = field || 'obj';
-			return getCountry(search, field, true, searchBy);
-		}
-
-
+		this.countrySelector = new Selector(Countries);
 
 	}).value('Countries', [{
 		"abbr": "af",

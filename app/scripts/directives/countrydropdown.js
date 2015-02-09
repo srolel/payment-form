@@ -41,13 +41,13 @@ angular.module('paymentApp')
 				});
 
 				function getCountries(search) {
-					$scope.countries = BuynowService.getCountries(search);
+					$scope.countries = search ? BuynowService.countrySelector.search(search) : BuynowService.countrySelector.get();
 				}
 
 				$scope.$watch('countryFilter', getCountries);
 
 				$scope.filterCountries = function filterCountries(actual, expected) {
-					return BuynowService.getCountry(expected) === actual;
+					return BuynowService.countrySelector.search(expected) === actual;
 				};
 
 				var country = StateService.getCookie('country');

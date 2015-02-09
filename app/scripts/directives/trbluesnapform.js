@@ -17,7 +17,7 @@ angular.module('paymentApp')
 		return {
 			restrict: 'A',
 			controllerAs: 'formCtrl',
-			controller: function ($scope, $element, $document, BuynowService, StateService) {
+			controller: function ($scope, $element, $document, BuynowService, StateService, $http) {
 
 				var formName = $element.attr('name');
 
@@ -39,8 +39,14 @@ angular.module('paymentApp')
 					selectedCountry: function processCountryName(country) {
 						return [{
 							name: 'country',
-							value: country.name
+							value: country.abbr
 						}];
+					},
+					selectedPlan: function processSelectedPlan(plan) {
+						return [{
+							name: 'sku',
+							value: plan.sku
+						}]
 					}
 				};
 
@@ -48,11 +54,14 @@ angular.module('paymentApp')
 					var additionalFormInputs = BlueSnap.processAdditionalInputs(processes, $scope);
 					BlueSnap.addInputsToForm(formName, additionalFormInputs)
 					var formData = BlueSnap.getFormData(formName);
-
+					console.log(formData);
+					// $http.post('api/credit/post', {
+					// 	data: formData
+					// });
 				};
 
 
-
+				window.wat = $scope;
 			},
 			link: function postLink(scope, element, attrs) {
 				var formId = element.attr('id');

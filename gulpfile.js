@@ -49,7 +49,7 @@ gulp.task('sass-sprite', ['make-sprite'], sassTask);
 gulp.task('watch', function () {
 	livereload.listen();
 	gulp.watch([app('styles/*.scss'), app('sprites/*.scss')], ['sass']);
-	gulp.watch([test('**/*.js'), app('**/*.js')], ['test']);
+	// gulp.watch([test('**/*.js'), app('**/*.js')], ['test']);
 })
 
 gulp.task('serve-app', function () {
@@ -58,7 +58,7 @@ gulp.task('serve-app', function () {
 			port: 8002,
 			proxies: [{
 				source: '/api',
-				target: 'http://trdashboardstaging.azurewebsites.net/api'
+				target: 'http://localhost:15145/api'
 			}]
 		}))
 });

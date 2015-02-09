@@ -11,11 +11,17 @@ angular.module('paymentApp')
 		return {
 			restrict: 'A',
 			link: function postLink(scope, element, attrs) {
-				scope.isCardSelected = function isSelected(card) {
-					return !scope.type || scope.type === card;
+
+				scope.$watch('type', function () {
+					BuynowService.cardSelector.select(scope.type);
+				});
+
+				scope.isCardSelected = function (card) {
+					if (!scope.type) return true;
+					return BuynowService.cardSelector.isSelected(card);
 				};
 
-				scope.cards = BuynowService.getCards();
+				scope.cards = BuynowService.cardSelector.get();
 			}
 		};
 	});

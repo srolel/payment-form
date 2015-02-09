@@ -124,171 +124,375 @@ The `sprites` mixin generates identical output to the CSS template
     }
 }
 
+@mixin ng-animation($transition-property, $start, $end, $transition-time, $method) {
+    #{$transition-property}: $end;
+    &.ng-hide {
+        #{$transition-property}: $start;
+    }
+    &.ng-hide-add,
+    &.ng-hide-remove {
+        /* this is required as of 1.3x to properly
+           apply all styling in a show/hide animation */
+        @include transition($transition-property, $transition-time, $method);
+    }
+    &.ng-hide-add-active {
+        #{$transition-property}: $start;
+    }
+    &.ng-hide-remove-active {
+        #{$transition-property}: $end;
+        /* the transition is defined in the active class */
+    }
+}
+
 $tr-blue: #007dd4;
 $tr-black: #353535;
 $tr-red: #e51414;
 $tr-grey: #c9c9c9;
+$tr-grey-bg: #fbfbfb;
+$tr-grey-border: #d4d4d4;
 
 .buynow-view {
-    input, select {
-        height: 24px;
-        padding: 1px 12px;
-        font-size: 14px;
-        line-height: 1.42857143;
-        color: #555;
-        background-color: #fff;
-        background-image: none;
-        border: 1px solid #ccc;
-        border-radius: 1px;
-        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-        -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
-        -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-        transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-        &:focus {
-            border-color: #66afe9;
-            outline: 0;
-            -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
-            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
-        }
+    a {
+        color: $tr-blue;
     }
-    select {
-        padding: 1px 6px;
-        height: 28px;
-    }
-    .header {
-        margin-bottom: 22px;
-        .title {
-            font-size: 21px;
-            font-family: Proxima Nova Regular;
-            .selected-country {
-                color: $tr-blue;
-                .triangle {
-                    font-size: 13px;
-                    vertical-align: 1px;
-                }
-            }
-        }
-        .country-dropdown {
-            position: absolute;
-            background: #fff;
-            border: 2px solid $tr-grey;
-            z-index: 999;
-            .country-list {
-                height: 300px;
-                width: 400px;
-                overflow-x: hidden;
-                overflow-y: scroll;
-                padding: 0;
-                @include sprites-before($flags-sprites);
-                .flag:before {
-                    margin-right: 4px;
-                }
-                .selected {
-                    background-color: gainsboro;
-                }
-            }
-        }
-    }
-    .cards-icons {
-        display: inline-block;
-        vertical-align: -8px;
-        @include sprites($cards-sprites, false, true);
-        .card-icon {
-            display: inline-block;
-            margin-right: 4px;
-        }
-    }
-    form.bluesnap-form {
+    .bluesnap-wrapper {
         border-bottom: 2px solid $tr-black;
         border-top: 2px solid $tr-black;
         padding: 20px;
-        ul.payment-options {
-            list-style-type: none;
-            padding: 0 0 7px;
-            margin: 0;
-            border-bottom: 1px solid $tr-grey;
-            li {
-                margin-right: 15px;
-                display: inline-block;
-                @include radio;
-                $payment-sprites: $credit-card, $paypal;
-                @include sprites-before($payment-sprites);
-                .icon.credit-card {
-                    vertical-align: -3px;
-                    &:before {
-                        vertical-align: -4px;
-                        margin-right: 6px;
-                    }
-                }
-                .icon.paypal {
-                    vertical-align: -2px;
-                    &:before {
-                        vertical-align: -6px;
-                        margin-right: 6px;
-                    }
-                }
-                .title {
-                    font-family: Proxima Nova Regular;
-                    font-size: 13px;
-                    color: #878787;
-                    font-weight: normal;
-                }
+        height: 390px;
+        .triangle {
+            font-size: 13px;
+            vertical-align: 1px;
+        }
+        .header {
+            margin-bottom: 22px;
+            .title {
+                font-size: 21px;
+                font-family: Proxima Nova Regular;
             }
         }
-        .input-fields {
-            .form-input {
-                margin: 15px 0;
-                .security-code-tooltip {
-                    &:before {
-                        @include sprite($security-numbers, "");
-                        vertical-align: -5px;
-                        margin-right: 6px;
+        .bluesnap-info-wrapper {
+            width: 33%;
+            float: right;
+            height: 100%;
+            box-sizing: border-box;
+            font-size: 12px;
+            vertical-align: top;
+            display: inline-block;
+            background-color: $tr-grey-bg;
+            border-left: 1px dashed $tr-black;
+            padding: 20px;
+            .currency {
+                margin-bottom: 20px;
+            }
+            dl.package {
+                margin-bottom: 50px;
+                dt {
+                    margin-bottom: 3px;
+                }
+                dd.details {
+                    padding: 5px;
+                    background-color: #fff;
+                    border: 1px solid $tr-grey-border;
+                    margin: 0;
+                    margin-bottom: 5px;
+                    .upper {
+                        font-weight: bold;
+                        margin-bottom: 4px;
                     }
-                    a {
-                        color: $tr-blue;
+                    .lower {
                         font-size: 11px;
-                        &:hover {
-                            text-decoration: none;
+                        .arrow {
+                            color: #ff0000;
+                            font-size: 10px;
                         }
                     }
                 }
-                input {
-                    width: 245px;
-                }
-                select {
-                    width: 271px;
-                }
-                &.card input {
-                    width: 205px;
-                }
-                &.expiry select {
-                    width: 80px;
-                    margin-right: 4px;
-                }
-                &.security input {
-                    width: 70px;
+                button {
+                    @include sprite($change-plan);
+                    &:hover {
+                        @include sprite($change-plan-hover);
+                    }
+                    &:active {
+                        @include sprite($change-plan-click);
+                    }
+                    border: none;
+                    outline: none;
+                    display: inline-block;
+                    float: right;
+                    a {
+                        font-weight: bold;
+                    }
                 }
             }
-            label {
-                width: 100px;
+            .have-coupon {
+                font-size: 11px;
+                margin-bottom: 8px;
+            }
+            .total {
+                text-align: right;
                 font-weight: bold;
-                font-size: 12px;
-                display: inline-block;
-                &:after {
-                    margin-left: 1px;
-                    vertical-align: -3px;
-                    content: '*';
-                    font-size: 18px;
-                    color: $tr-red;
+                font-size: 13px;
+                padding: 4px;
+                border-top: 2px solid;
+                border-bottom: 2px solid;
+            }
+        }
+        .bluesnap-form-wrapper {
+            height: 100%;
+            display: inline-block;
+            input, select {
+                height: 24px;
+                padding: 1px 12px;
+                font-size: 14px;
+                line-height: 1.42857143;
+                color: #555;
+                background-color: #fff;
+                background-image: none;
+                border: 1px solid #ccc;
+                border-radius: 1px;
+                -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+                box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+                -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+                -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+                transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+                &:focus {
+                    border-color: #66afe9;
+                    outline: 0;
+                    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+                    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+                }
+                &.ng-invalid:not(:focus) {
+                  border-color: #ff7800;
+                  box-shadow:none;
                 }
             }
-            .tr-bluesnap-input {
-                display: inline-block;
+            select {
+                padding: 1px 6px;
+                height: 28px;
             }
-            > .title {
-                font-family: Proxima Nova Regular;
-                font-size: 21px;
+            .header {
+                margin-bottom: 22px;
+                .title {
+                    font-size: 21px;
+                    font-family: Proxima Nova Regular;
+                    .selected-country {
+                        color: $tr-blue;
+                        position: relative;
+                        // .triangle {
+                        //     font-size: 13px;
+                        //     vertical-align: 1px;
+                        // }
+                   
+                    }
+                }
+                .country-dropdown {
+                    @include ng-animation(opacity, 0, 1, 0.1s, ease-in-out);
+                    font-size: 13px;
+                    color: $tr-black;
+                    position: absolute;
+                    font-family: sans-serif;
+                    left: -30px;
+                    background: #fff;
+                    z-index: 999;
+                    .country-search {
+                        box-sizing: border-box;
+                        width: 100%;
+                    }
+                    .country-list {
+                        border-bottom: 1px solid $tr-grey;
+                        border-left: 1px solid $tr-grey;
+                        border-right: 1px solid $tr-grey;
+                        height: 300px;
+                        width: 330px;
+                        overflow-x: hidden;
+                        overflow-y: scroll;
+                        padding: 0;
+                        margin: 0;
+                        @include sprites-before($flags-sprites);
+                        .flag:before {
+                            margin-right: 4px;
+                        }
+                        .selected {
+                            color: $tr-blue;
+                        }
+                        .marked {
+                            font-weight: bold;
+                        }
+                        li {
+                            margin: 7px 2px;
+                        }
+                    }
+                }
+            }
+            .cards-icons {
+                display: inline-block;
+                vertical-align: -8px;
+                $card-icon-sprites: $visa, $mastercard, $amex, $discover, $jcb;
+                @include sprites($card-icon-sprites, false, true);
+                .card-icon {
+                    display: inline-block;
+                    margin-right: 6px;
+                }
+            }
+            form.bluesnap-form {
+                ul.payment-options {
+                    list-style-type: none;
+                    padding: 0 0 7px;
+                    margin: 0;
+                    border-bottom: 1px solid $tr-grey;
+                    li {
+                        margin-right: 15px;
+                        display: inline-block;
+                        @include radio;
+                        $payment-sprites: $credit-card, $paypal;
+                        @include sprites-before($payment-sprites);
+                        .icon.credit-card {
+                            vertical-align: -3px;
+                            &:before {
+                                vertical-align: -4px;
+                                margin-right: 6px;
+                            }
+                        }
+                        .icon.paypal {
+                            vertical-align: -2px;
+                            &:before {
+                                vertical-align: -6px;
+                                margin-right: 6px;
+                            }
+                        }
+                        .title {
+                            font-family: Proxima Nova Regular;
+                            font-size: 13px;
+                            color: #878787;
+                            font-weight: normal;
+                        }
+                    }
+                }
+                .input-fields {
+                    display: inline-block;
+                    position: relative;
+                    button[type=submit] {
+                        font-family: Proxima Nova Regular;
+                        border: none;
+                        font-size: 21px;
+                        color: #fff;
+                        padding-bottom: 6px;
+                        position: absolute;
+                        right: 0;
+                        bottom: 9px;
+                        outline: none;
+                        @include sprite($submit);
+                        &:hover {
+                            @include sprite-position($submit-hover);
+                        }
+                    }
+                    fieldset {
+                        border: none;
+                        margin: 0;
+                        padding: 0;
+                        &.personal-details {
+                            display: inline-block;
+                            .title {
+                                font-family: Proxima Nova Regular;
+                                font-size: 21px;
+                            }
+                        }
+                    }
+                    .form-input {
+                        margin: 15px 0;
+                        input {
+                            width: 245px;
+                        }
+                        select {
+                            width: 271px;
+                        }
+                        &.card input {
+                            width: 205px;
+                        }
+                        &.expiry select {
+                            width: 80px;
+                            margin-right: 4px;
+                        }
+                        &.security {
+                            input {
+                                width: 95px;
+                            }
+                            .security-code-tooltip {
+                                position: relative;
+                                .title {
+                                    font-size: 21px;
+                                    font-weight: normal;
+                                }
+                                &:before {
+                                    @include sprite($security-numbers, "");
+                                    vertical-align: -5px;
+                                    margin-right: 6px;
+                                }
+                                a {
+                                    font-size: 11px;
+                                    &:hover {
+                                        text-decoration: none;
+                                    }
+                                }
+                                .tooltip-content {
+                                    @include ng-animation(opacity, 0, 1, 0.1s, ease-in-out);
+                                    width: 550px;
+                                    padding: 10px 20px;
+                                    position: absolute;
+                                    background: #F2F2F2;
+                                    border: 2px solid #D8D8D8;
+                                    bottom: 40px;
+                                    left: 0;
+                                    z-index: 999;
+                                    .card-examples {
+                                        white-space: nowrap;
+                                        .example {
+                                            white-space: normal;
+                                            display: inline-block;
+                                            width: 48%;
+                                            box-sizing: border-box;
+                                            vertical-align: top;
+                                            text-align: center;
+                                            p {
+                                                text-align: left;
+                                            }
+                                            &.left {
+                                                border-right: 1px dotted #ACACAC;
+                                                padding-right: 25px;
+                                                &:before {
+                                                    @include sprite($american-x-cvv, "");
+                                                }
+                                            }
+                                            &.right {
+                                                padding-left: 25px;
+                                                &:before {
+                                                    @include sprite($visa-cvv, "");
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    label {
+                        width: 100px;
+                        font-weight: bold;
+                        font-size: 12px;
+                        display: inline-block;
+                        &:after {
+                            margin-left: 1px;
+                            vertical-align: -3px;
+                            content: '*';
+                            font-size: 18px;
+                            color: $tr-red;
+                        }
+                    }
+                    .tr-bluesnap-input {
+                        display: inline-block;
+                    }
+                }
             }
         }
     }

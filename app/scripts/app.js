@@ -11,6 +11,7 @@
 angular
 	.module('paymentApp', [
 		'angularPayments',
+		'ngAnimate',
 		// 'ngCookies',
 		// 'ngResource',
 		// 'ngSanitize',

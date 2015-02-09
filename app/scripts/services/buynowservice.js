@@ -27,6 +27,22 @@ angular.module('paymentApp')
 		//Countries Value service is an array of country objects - {name, code, abbr}
 		this.countrySelector = new Selector(Countries);
 
+		var plans = [{
+			name: 'premium',
+			title: 'TipRanks Premium Yearly ($29.95/MO)',
+			id: 2,
+			sku: '3256820',
+			price: 359
+		}, {
+			name: 'ultimate',
+			title: 'TipRanks Ultimate Yearly ($49.95/MO)',
+			id: 3,
+			sku: '3249312',
+			price: 599
+		}]
+
+		this.planSelector = new Selector(plans, 0);
+
 	}).value('Countries', [{
 		"abbr": "af",
 		"code": "004",

@@ -11,10 +11,13 @@ angular.module('paymentApp')
 		return {
 			restrict: 'AE',
 			link: function postLink(scope, element, attrs) {
-				scope.paymentOpts = BuynowService.getPaymentOpts();
-
-				scope.isPaymentSelected = BuynowService.isPaymentSelected;
-				scope.selectPayment = BuynowService.selectPayment;
+				scope.paymentOpts = BuynowService.paymentSelector.get();
+				scope.isPaymentSelected = function (arg) {
+					return BuynowService.paymentSelector.isSelected(arg);
+				}
+				scope.selectPayment = function (arg) {
+					BuynowService.paymentSelector.select(arg);
+				}
 			}
 		};
 	});

@@ -20,10 +20,13 @@ angular.module('paymentApp')
 				var searchInputEl = $element.find('input');
 
 				this.toggleDropdown = function toggleDropdown(e) {
-					e.stopPropagation();
+					if (e && e.stopPropagation) e.stopPropagation();
 					dropdownShown = !dropdownShown;
 					$timeout(function () {
-						searchInputEl[0].focus();
+						if (dropdownShown) {
+							markCountry(BuynowService.countrySelector.indexOf($scope.selectedCountry));
+							searchInputEl[0].focus();
+						}
 					});
 				};
 
@@ -31,35 +34,84 @@ angular.module('paymentApp')
 					return dropdownShown;
 				}
 
-				var deRegister = $document.on('click', function (e) {
+				var deRegisters = [];
+
+				deRegisters.push($document.on('click', function (e) {
 					dropdownShown = false;
 					$scope.$apply();
-				});
+				}));
+
+				deRegisters.push($document.on('keydown', function (e) {
+					if (e.keyCode === 27) {
+						dropdownShown = false;
+						$scope.$apply();
+					}
+				}));
+
+
 
 				$scope.$on('$destroy', function () {
-					deRegister();
+					deRegisters.forEach(function (fn) {
+						fn();
+					});
 				});
 
 				function getCountries(search) {
-					$scope.countries = search ? BuynowService.countrySelector.search(search) : BuynowService.countrySelector.get();
+					markCountry(0);
+					$scope.countries = search ? BuynowService.countrySelector.search(search, 'obj', true) : BuynowService.countrySelector.get();
 				}
 
 				$scope.$watch('countryFilter', getCountries);
 
-				$scope.filterCountries = function filterCountries(actual, expected) {
-					return BuynowService.countrySelector.search(expected) === actual;
-				};
-
 				var country = StateService.getCookie('country');
 
-				$scope.selectedCountry = BuynowService.getCountry(country, 'obj');
+				$scope.selectedCountry = BuynowService.countrySelector.search(country, 'obj');
 
-				$scope.selectCountry = function selectCountry(country) {
-					$scope.selectedCountry = country;
+				BuynowService.countrySelector.select($scope.selectedCountry);
+
+				this.selectCountry = function (country) {
+					$scope.selectedCountry = BuynowService.countrySelector.select(country);
+					this.toggleDropdown();
 				};
 
-				$scope.isCountrySelected = function isSelected(country) {
-					return $scope.selectedCountry === country;
+				this.isCountrySelected = function (country) {
+					return BuynowService.countrySelector.isSelected(country);
+				};
+
+				var markedCountry;
+
+				deRegisters.push($element.find('input').on('keydown', function (e) {
+					var incr = {
+						38: -1,
+						40: 1,
+					}[e.keyCode] || 0;
+					changeMarkedCountryBy(incr);
+					$scope.$apply();
+				}));
+
+				var scrollEl = $element.find('ul');
+
+				var scrollElChildHeight = 22; //hard-coded ftmfw
+
+				var topOffset = 2; //How many elements to show before marked one in the lists
+
+				var markCountry = function (index) {
+					markedCountry = index;
+					scrollEl[0].scrollTop = (index - topOffset) * scrollElChildHeight;
+					if (markedCountry < 0) markedCountry = 0;
+					if ($scope.countries && markedCountry > $scope.countries.length - 1) markedCountry = $scope.countries.length - 1;
+				}
+
+				var changeMarkedCountryBy = function (change) {
+					markCountry(markedCountry + change);
+				}
+
+				this.isCountryMarked = function (index) {
+					return markedCountry === index;
+				}
+
+				this.submit = function () {
+					this.selectCountry($scope.countries[markedCountry]);
 				};
 
 			},

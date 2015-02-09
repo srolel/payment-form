@@ -25,7 +25,8 @@ angular.module('paymentApp')
 				if (scope.isEncrypted) {
 					element.find('input').attr('data-bluesnap', BlueSnap.getEncryptedName(scope.name))
 				}
-
+				if (scope.name === 'expiry')
+					window.scp = scope;
 				scope.type = scope.type || 'text';
 
 				scope.input = formCtrl.getForm()[scope.name];

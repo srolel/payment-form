@@ -1,58 +1,117 @@
 <div class="buynow-view">
-    <form class="bluesnap-form" id="checkout-form" name="checkoutForm" tr-bluesnap-form name="checkoutForm" novalidate="" ng-submit="formCtrl.submit()">
-        <div country-dropdown class="header">
-            <span class="title">Payment Options For
-			<span ng-click="countryDropdownCtrl.toggleDropdown($event)" class="selected-country">{{selectedCountry.name}} <span class="triangle">&#x25BC;</span></span>
-            </span>
-            <div class="country-dropdown" ng-show="countryDropdownCtrl.isDropdownShown()">
-                <input ng-click="$event.stopPropagation()" type="text" ng-model="countryFilter">
-                <ul class="country-list">
-                    <li ng-repeat="country in countries track by country.code | filter:countryFilter:filterCountries" class="flag {{country.abbr}}" ng-class="{selected: isCountrySelected(country)}" ng-click="selectCountry(country)">{{country.name}}</li>
-                </ul>
-            </div>
-        </div>
-        <ul class="payment-options" payment-options>
-            <li ng-repeat="opt in paymentOpts">
-                <input type="radio" ng-checked="isPaymentSelected(opt)">
-                <label class="title" ng-click="selectPayment(opt)"><span class="radio"></span><span class="icon {{opt.id}}">{{opt.name}}</span>
-                </label>
-            </li>
-        </ul>
-
-        <div class="input-fields">
-            <div class="form-input card">
-                <label>Card Number</label>
-                <tr-bluesnap-input ng-model="card" type-model="type" is-encrypted="true"></tr-bluesnap-input>
-                <div class="cards-icons" credit-cards>
-                    <div class="card-icon {{card}}" ng-repeat="card in cards" ng-class="{selected: isCardSelected(card)}"></div>
+    <div class="bluesnap-wrapper">
+        <div class="bluesnap-form-wrapper">
+            <form country-dropdown class="header" ng-submit="countryDropdownCtrl.submit()">
+                <span class="title">Payment Options For
+			<span ng-click="countryDropdownCtrl.toggleDropdown($event)" class="selected-country">{{selectedCountry.name}} <span class="triangle">&#x25BC;</span>
+                <div class="country-dropdown" ng-show="countryDropdownCtrl.isDropdownShown()">
+                    <input ng-click="$event.stopPropagation()" type="text" ng-model="countryFilter" class="country-search">
+                    <ul class="country-list" ng-click="$event.stopPropagation()">
+                        <li ng-repeat="country in countries track by country.code" class="flag {{country.abbr}}" ng-class="{marked: countryDropdownCtrl.isCountryMarked($index), selected: countryDropdownCtrl.isCountrySelected(country)}" ng-click="countryDropdownCtrl.selectCountry(country)">{{country.name}}</li>
+                    </ul>
                 </div>
-            </div>
-            <div class="form-input expiry">
-                <label>Expiration Date</label>
-                <month-select ng-model="expiryMonth"></month-select>
-                <year-select ng-model="expiryYear"></year-select>
-                <tr-bluesnap-input type="hidden" ng-model="expiry"></tr-bluesnap-input>
-            </div>
-            <div class="form-input security">
-                <label>Security Code</label>
-                <tr-bluesnap-input ng-model="cvc" type-model="type" is-encrypted="true"></tr-bluesnap-input>
-                <span class="security-code-tooltip"><a>What is this?</a></span>
-            </div>
-            <div class="title">Personal Details</div>
-            <div class="form-input fullname">
-                <label>Full Name</label>
-                <input type="text" required name="fullName" ng-model="fullName">
-            </div>
-            <div class="form-input email">
-                <label>Email Address</label>
-                <input type="email" required name="email" ng-model="email">
-            </div>
-            <div class="form-input {{name}}" ng-repeat="(name, opts) in selectedCountry.sub">
-                <label>{{name | capitalize}}</label>
-                <select ng-model="state" ng-options="state.name for state in opts"></select>
-            </div>
-        </div>
-        <button type="submit">submit</button>
+                </span>
+                </span>
 
-    </form>
+            </form>
+            <form class="bluesnap-form" id="checkout-form" tr-bluesnap-form name="checkoutForm" novalidate="" ng-submit="formCtrl.submit()">
+
+                <ul class="payment-options" payment-options>
+                    <li ng-repeat="opt in paymentOpts">
+                        <input type="radio" ng-checked="isPaymentSelected(opt)">
+                        <label class="title" ng-click="selectPayment(opt)"><span class="radio"></span><span class="icon {{opt.id}}">{{opt.name}}</span>
+                        </label>
+                    </li>
+                </ul>
+
+                <div class="input-fields">
+                    <fieldset class="card-details">
+                        <div class="form-input card">
+                            <label for="card">Card Number</label>
+                            <tr-bluesnap-input ng-model="card" type-model="type" is-encrypted="true"></tr-bluesnap-input>
+                            <div class="cards-icons" credit-cards>
+                                <div class="card-icon {{card}}" ng-repeat="card in cards" ng-class="{selected: isCardSelected(card)}"></div>
+                            </div>
+                            <span ng-show="checkoutForm.card.$valid">VALID</span>
+                            <span ng-show="checkoutForm.card.$invalid">INVALID</span>
+                        </div>
+                        <div class="form-input expiry">
+                            <label for="expiryMonth">Expiration Date</label>
+                            <month-select ng-model="expiryMonth" id="expiryMonth"></month-select>
+                            <year-select ng-model="expiryYear"></year-select>
+                            <tr-bluesnap-input class="ng-hide" ng-model="expiry"></tr-bluesnap-input>
+                            <span ng-show="checkoutForm.expiry.$valid">VALID</span>
+                            <span ng-show="checkoutForm.expiry.$invalid">INVALID</span>
+                        </div>
+                        <div class="form-input security">
+                            <label for="cvc">Security Code</label>
+                            <tr-bluesnap-input ng-model="cvc" type-model="type" is-encrypted="true"></tr-bluesnap-input>
+                            <hover-tooltip class="security-code-tooltip" title="What is this?">
+
+
+                                <h2 class="title">Credit Card Security Code</h2>
+                                <p>A three or four digit code on your credit card, separate from the 16 digit card number. The location varies slightly depending on your type of card:</p>
+                                <div class="card-examples">
+                                    <div class="example left">
+                                        <p>On the reverse side of your card, you should see either the entire 16-digit credit card number or just the last four digits followed by a special 3-digit code. This 3-digit code is your Card Security Code.</p>
+                                    </div>
+                                    <div class="example right">
+                                        <p>Look for the 4-digit code printed on the front of your card just above and to the right of your main credit card number. This 4-digit code is your Card Security Code.</p>
+                                    </div>
+                                </div>
+
+                            </hover-tooltip>
+                            <span ng-show="checkoutForm.cvc.$valid">VALID</span>
+                            <span ng-show="checkoutForm.cvc.$invalid">INVALID</span>
+
+                        </div>
+                    </fieldset>
+                    <fieldset class="personal-details">
+                        <legend class="title">Personal Details</legend>
+                        <div class="form-input fullname">
+                            <label for="fullName">Full Name</label>
+                            <input type="text" required id="fullName" name="fullName" ng-model="fullName">
+                            <span ng-show="checkoutForm.fullName.$valid">VALID</span>
+                            <span ng-show="checkoutForm.fullName.$invalid">INVALID</span>
+                        </div>
+                        <div class="form-input email">
+                            <label for="email">Email Address</label>
+                            <input type="email" required name="email" id="email" ng-model="email">
+                            <span ng-show="checkoutForm.email.$valid">VALID</span>
+                            <span ng-show="checkoutForm.email.$invalid">INVALID</span>
+                        </div>
+                        <div class="form-input {{name}}" ng-repeat="(name, opts) in selectedCountry.sub">
+                            <label for="state">{{name | capitalize}}</label>
+                            <select ng-model="state" ng-init="state = opts[0]" name="state" id="state" ng-options="state.name for state in opts"></select>
+                            <span ng-show="checkoutForm.state.$valid">VALID</span>
+                            <span ng-show="checkoutForm.state.$invalid">INVALID</span>
+                        </div>
+                    </fieldset>
+                    <button type="submit" class="submit">Submit</button>
+
+
+                </div>
+
+            </form>
+        </div>
+        <div class="bluesnap-info-wrapper" tr-bluesnap-info>
+            <div class="header"><span class="title">Order Information</span>
+            </div>
+            <div class="currency">Currency: <a>USD</a>
+                <!--<span class="triangle">&#x25BC;</span>-->
+            </div>
+            <dl class="package">
+                <dt>Package:</dt>
+                <dd class="details">
+                    <div class="upper">{{selectedPlan.title}}</div>
+                    <div class="lower"><span class="arrow">></span> Charged Annually</div>
+                </dd>
+                <button ng-click="infoCtrl.changePlan()" class="change-plan"><a>Change Plan</a>
+                </button>
+            </dl>
+            <div class="have-coupon"><a>Have a coupon?</a>
+            </div>
+            <div class="total">Total {{selectedPlan.price | currency}}</div>
+        </div>
+    </div>
 </div>

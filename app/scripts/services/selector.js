@@ -33,7 +33,7 @@ angular.module('paymentApp')
 
 
 		var Selector = function (_data, selectedIndex) {
-			if (!angular.isArray(arg)) errorService.typeError('Selector constructor argument should be an array.');
+			if (_data !== Object(_data)) errorService.typeError('Selector constructor argument should be an object.');
 			var data = _data;
 			this.selected = data[selectedIndex];
 			this.get = function () {
@@ -43,10 +43,11 @@ angular.module('paymentApp')
 
 		Selector.prototype.select = function (arg, fnArgs) {
 			this.selected = arg;
-			if (arg.onSelect) arg.onSelect.apply(arg, fnArgs);
+			if (arg && arg.onSelect) arg.onSelect.apply(arg, fnArgs);
+			return this.selected;
 		};
 
-		Selector.prototype.isSelected = function () {
+		Selector.prototype.isSelected = function (arg) {
 			return this.selected === arg;
 		};
 
@@ -54,6 +55,10 @@ angular.module('paymentApp')
 			if (!term) return null;
 
 			term = term.toString();
+
+			var data = this.get();
+
+			if (data[term]) return data[term];
 
 			var isMatch = partial ? function (a, b) {
 					return a.search(new RegExp(b)) > -1;
@@ -73,7 +78,7 @@ angular.module('paymentApp')
 			searchBy = isArrayOrString(searchBy) ? searchBy : true;
 
 			//filter countries
-			var result = this.get().filter(function (c) {
+			var result = data.filter(function (c) {
 
 				//properties to search by
 				if (Object.keys(c).map(function (key) {
@@ -86,13 +91,21 @@ angular.module('paymentApp')
 			});
 
 			//map to relevant requested properties
-			if (prop) {
+			if (prop && prop !== 'obj') {
 				result = result.map(function (res) {
 					return res[prop];
 				})
 			}
 
 			return partial ? result : result[0] || null;
+		};
+
+		Selector.prototype.getSelected = function () {
+			return this.selected;
+		};
+
+		Selector.prototype.indexOf = function (arg) {
+			return this.get().indexOf(arg);
 		};
 
 		return Selector;

@@ -130,7 +130,8 @@ angular.module('paymentApp')
 				required: 'Field \'Full Name\' is required.'
 			},
 			email: {
-				required: 'Field \'Email Address\' is required.'
+				required: 'Field \'Email Address\' is required.',
+				email: '\'Email Address\' should be a valid Email address.'
 			}
 
 		}

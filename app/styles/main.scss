@@ -92,11 +92,14 @@ The `sprites` mixin generates identical output to the CSS template
     @each $sprite in $sprites {
         $sprite-name: nth($sprite, 10);
         .#{$sprite-name} {
-            @include sprite($sprite, $pseudo, "top");
             @if $parts {
+                @include sprite($sprite, $pseudo, "top");
                 &.selected {
                     @include sprite-position($sprite, "bottom");
                 }
+            }
+            @else {
+                @include sprite($sprite, $pseudo);
             }
         }
     }
@@ -263,8 +266,8 @@ $tr-grey-border: #d4d4d4;
                     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
                 }
                 &.ng-invalid:not(:focus) {
-                  border-color: #ff7800;
-                  box-shadow:none;
+                    border-color: #ff7800;
+                    box-shadow: none;
                 }
             }
             select {
@@ -400,6 +403,51 @@ $tr-grey-border: #d4d4d4;
                         }
                     }
                     .form-input {
+                        position: relative;
+                        input, select {
+                            &.ng-touched {
+                                // &:not(:focus) {
+                                ~ .checkmark, ~ .exclmark {
+                                    vertical-align: -4px;
+                                    margin-left: 4px;
+                                    margin-right: 1px;
+                                }
+                                ~ .checkmark {
+                                    @include sprite($checkmark, "");
+                                }
+                                ~ .exclmark {
+                                    @include sprite($exclmark, "");
+                                }
+                                // }
+                                ~ .input-feedback {
+                                    position: absolute;
+                                    background: #ff7800;
+                                    opacity: .9;
+                                    filter: alpha(opacity = 90);
+                                    margin: 0;
+                                    border-radius: 5px 5px 5px 5px;
+                                    -webkit-border-radius: 5px 5px 5px 5px;
+                                    -moz-border-radius: 5px 5px 5px 5px;
+                                    -khtml-border-radius: 5px 5px 5px 5px;
+                                    bottom: 35px;
+                                    left: 80px;
+                                    max-width: 350px;
+                                    min-width: 130px;
+                                    padding: 7px 10px;
+                                    text-align: center;
+                                    z-index: 2;
+                                    color: #fff;
+                                    font-size: .7em;
+                                    line-height: 12px;
+                                    display: none;
+                                }
+                                &:focus {
+                                    ~ .input-feedback {
+                                        display: block;
+                                    }
+                                }
+                            }
+                        }
                         margin: 15px 0;
                         input {
                             width: 245px;

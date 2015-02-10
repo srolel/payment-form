@@ -3,18 +3,19 @@
         <div class="bluesnap-form-wrapper">
             <form country-dropdown class="header" ng-submit="countryDropdownCtrl.submit()">
                 <span class="title">Payment Options For
-			<span ng-click="countryDropdownCtrl.toggleDropdown($event)" class="selected-country">{{selectedCountry.name}} <span class="triangle">&#x25BC;</span>
+            <span ng-click="countryDropdownCtrl.toggleDropdown($event)" class="selected-country">{{selectedCountry.name}} <span class="triangle">&#x25BC;</span>
                 <div class="country-dropdown" ng-show="countryDropdownCtrl.isDropdownShown()">
                     <input ng-click="$event.stopPropagation()" type="text" ng-model="countryFilter" class="country-search">
                     <ul class="country-list" ng-click="$event.stopPropagation()">
-                        <li ng-repeat="country in countries track by country.code" class="flag {{country.abbr}}" ng-class="{marked: countryDropdownCtrl.isCountryMarked($index), selected: countryDropdownCtrl.isCountrySelected(country)}" ng-click="countryDropdownCtrl.selectCountry(country)">{{country.name}}</li>
+                        <li ng-repeat="country in countries track by country.code" class="flag {{country.abbr
+}}" ng-class="{marked: countryDropdownCtrl.isCountryMarked($index), selected: countryDropdownCtrl.isCountrySelected(country)}" ng-click="countryDropdownCtrl.selectCountry(country)">{{country.name}}</li>
                     </ul>
                 </div>
                 </span>
                 </span>
 
             </form>
-            <form class="bluesnap-form" id="checkout-form" tr-bluesnap-form name="checkoutForm" novalidate="" ng-submit="formCtrl.submit()">
+            <form class="bluesnap-form" id="checkout-form" tr-bluesnap-form name="checkoutForm" ng-submit="formCtrl.submit()">
 
                 <ul class="payment-options" payment-options>
                     <li ng-repeat="opt in paymentOpts">
@@ -32,16 +33,12 @@
                             <div class="cards-icons" credit-cards>
                                 <div class="card-icon {{card}}" ng-repeat="card in cards" ng-class="{selected: isCardSelected(card)}"></div>
                             </div>
-                            <span ng-show="checkoutForm.card.$valid">VALID</span>
-                            <span ng-show="checkoutForm.card.$invalid">INVALID</span>
                         </div>
                         <div class="form-input expiry">
                             <label for="expiryMonth">Expiration Date</label>
                             <month-select ng-model="expiryMonth" id="expiryMonth"></month-select>
                             <year-select ng-model="expiryYear"></year-select>
                             <tr-bluesnap-input class="ng-hide" ng-model="expiry"></tr-bluesnap-input>
-                            <span ng-show="checkoutForm.expiry.$valid">VALID</span>
-                            <span ng-show="checkoutForm.expiry.$invalid">INVALID</span>
                         </div>
                         <div class="form-input security">
                             <label for="cvc">Security Code</label>
@@ -61,8 +58,7 @@
                                 </div>
 
                             </hover-tooltip>
-                            <span ng-show="checkoutForm.cvc.$valid">VALID</span>
-                            <span ng-show="checkoutForm.cvc.$invalid">INVALID</span>
+
 
                         </div>
                     </fieldset>
@@ -70,21 +66,15 @@
                         <legend class="title">Personal Details</legend>
                         <div class="form-input fullname">
                             <label for="fullName">Full Name</label>
-                            <input type="text" required id="fullName" name="fullName" ng-model="fullName">
-                            <span ng-show="checkoutForm.fullName.$valid">VALID</span>
-                            <span ng-show="checkoutForm.fullName.$invalid">INVALID</span>
+                            <input type="text" required id="fullName" name="fullName" ng-model="fullName" form-input>
                         </div>
                         <div class="form-input email">
                             <label for="email">Email Address</label>
-                            <input type="email" required name="email" id="email" ng-model="email">
-                            <span ng-show="checkoutForm.email.$valid">VALID</span>
-                            <span ng-show="checkoutForm.email.$invalid">INVALID</span>
+                            <input type="email" required name="email" id="email" ng-model="email" form-input>
                         </div>
                         <div class="form-input {{name}}" ng-repeat="(name, opts) in selectedCountry.sub">
                             <label for="state">{{name | capitalize}}</label>
-                            <select ng-model="state" ng-init="state = opts[0]" name="state" id="state" ng-options="state.name for state in opts"></select>
-                            <span ng-show="checkoutForm.state.$valid">VALID</span>
-                            <span ng-show="checkoutForm.state.$invalid">INVALID</span>
+                            <select ng-model="state" ng-init="state = opts[0]" name="state" id="state" ng-options="state.name for state in opts" form-input></select>
                         </div>
                     </fieldset>
                     <button type="submit" class="submit">Submit</button>

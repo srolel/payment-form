@@ -59,9 +59,6 @@ angular.module('paymentApp')
 					// 	data: formData
 					// });
 				};
-
-
-				window.wat = $scope;
 			},
 			link: function postLink(scope, element, attrs) {
 				var formId = element.attr('id');
